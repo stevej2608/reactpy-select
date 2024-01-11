@@ -4,9 +4,6 @@ from pathlib import Path
 
 from reactpy.web.module import export, module_from_file
 
-ChartType = Literal['line', 'area', 'bar', 'pie', 'donut', 'scatter', 'bubble', 'heatmap', 'radialBar']
-
-
 _js_module = module_from_file(
     "reactpy-select",
     file=Path(__file__).parent/"bundle.dev.js" if environ.get("REACTPY_DEBUG_MODE") else Path(__file__).parent/"bundle.min.js" ,
