@@ -1,14 +1,14 @@
 import reactpy
 from reactpy.testing import poll
 
-from reactpy_select import ExampleCounter
+from reactpy_select import Dropdown
 
 
 async def test_example_counter(display):
     count = reactpy.Ref(0)
 
     await display.show(
-        lambda: ExampleCounter(
+        lambda: Dropdown(
             on_count_change=count.set_current,
             button_text="this is a test",
             button_id="test-button",

@@ -1,22 +1,19 @@
 from reactpy import html, component, event, run
 
-from reactpy_select import ExampleCounter
+from reactpy_select import Dropdown
+
+options = [
+  { 'value': 'chocolate', 'label': 'Chocolate' },
+  { 'value': 'strawberry', 'label': 'Strawberry' },
+  { 'value': 'vanilla', 'label': 'Vanilla' }
+]
 
 
 @component
 def AppMain():
-    
-    @event
-    def on_change(evt):
-        print('Button Clicked')
-
     return html.div(
-        html.h2('Example'),
-        ExampleCounter(
-            on_count_change=on_change,
-            button_text="Click Me",
-            button_id="test-button"
-        )
+        html.h2('Dropdown Example'),
+        Dropdown(options=options, multi=True)
     )
 
 # python usage.py

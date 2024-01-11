@@ -1,4 +1,4 @@
-from typing import Literal, Union, List, Dict, Any, Optional
+from typing import List
 from os import environ
 from pathlib import Path
 
@@ -10,13 +10,13 @@ _js_module = module_from_file(
     fallback="⏳",
 )
 
-_ExampleCounter = export(_js_module, "ExampleCounter")
+_Dropdown = export(_js_module, "Dropdown")
 
-def ExampleCounter(on_count_change, button_text, button_id):
-    return _ExampleCounter(
-        {
-            "onCountChange": on_count_change,
-            "buttonText": button_text,
-            "buttonId": button_id,
-        }
-    )
+def Dropdown(options: List[str], multi:bool = False):
+
+    props = {'options' : options} 
+
+    if multi:
+         props.update({"isMulti": "true"})
+
+    return _Dropdown(props)

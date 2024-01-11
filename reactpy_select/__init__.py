@@ -1,4 +1,4 @@
-from .component_wrapper import ExampleCounter
+from .component_wrapper import Dropdown
 
 # the version is statically loaded by setup.py
 __version__ = "0.0.1"
