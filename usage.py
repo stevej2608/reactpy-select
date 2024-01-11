@@ -11,9 +11,14 @@ options = [
 
 @component
 def AppMain():
+
+    @event
+    def onChange(event, new_value):
+        print(f"OnChange event={event} new_value={new_value}")
+
     return html.div(
         html.h2('Dropdown Example'),
-        Dropdown(options=options, multi=True)
+        Dropdown(options=options, multi=True, onchange=onChange)
     )
 
 # python usage.py
