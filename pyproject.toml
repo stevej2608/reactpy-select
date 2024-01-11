@@ -1,20 +1,22 @@
 [tool.poetry]
 name = "reactpy-select"
-version = "0.0.9"
+version = "0.0.1"
 description = ""
 authors = ["Steve Jones <jonesst2608@gmail.com>"]
 readme = "README.md"
 license = "MIT"
 homepage = "https://github.com/stevej2608/reactpy-select/README.md"
 repository = "https://github.com/stevej2608/reactpy-select"
-
+include = ["reactpy_select/bundle.min.js", "reactpy_select/bundle.dev.js"]
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0.0"
+reactpy = {extras = ["starlette", "testing"], version = "^1.0.2"}
+
+[tool.poetry.group.dev.dependencies]
 twine = "^4.0.2"
 pytest = "^7.4.4"
 pytest-asyncio = "^0.23.3"
-reactpy = {extras = ["starlette", "testing"], version = "^1.0.2"}
 
 
 [tool.pytest.ini_options]
