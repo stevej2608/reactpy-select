@@ -10,14 +10,14 @@ options = [
 ]
 
 async def test_example_counter(display):
-    count = reactpy.Ref(0)
+    options = reactpy.Ref(0)
 
     await display.show(
-        lambda: Dropdown(options=options)
+        lambda: Dropdown(options=options, id="test-dropdown")
     )
 
-    client_side_button = await display.page.wait_for_selector("#test-button")
-    poll_count = poll(lambda: count.current)
+    client_side_button = await display.page.wait_for_selector("#test-dropdown")
+    poll_count = poll(lambda: options.current)
 
     await client_side_button.click()
     await poll_count.until_equals(1)
