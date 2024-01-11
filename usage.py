@@ -1,6 +1,6 @@
 from reactpy import html, component, event, run
 
-from reactpy_select import Dropdown
+from reactpy_select import Dropdown, EventActions, EventOptions
 
 options = [
   { 'value': 'chocolate', 'label': 'Chocolate' },
@@ -13,8 +13,8 @@ options = [
 def AppMain():
 
     @event
-    def onChange(event, new_value):
-        print(f"OnChange event={event} new_value={new_value}")
+    def onChange(event: EventOptions, action: EventActions):
+        print(f"OnChange event={event} action={action['action']}")
 
     return html.div(
         html.h2('Dropdown Example'),

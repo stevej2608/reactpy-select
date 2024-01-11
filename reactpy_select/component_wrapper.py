@@ -1,4 +1,4 @@
-from typing import List, Callable, Any
+from typing import List, Dict, Callable, Any, TypedDict, Literal
 from os import environ
 from pathlib import Path
 
@@ -15,7 +15,18 @@ _Dropdown = export(_js_module, "Dropdown")
 # https://react-select.com/props
 # https://dash.plotly.com/dash-core-components/dropdown#examples
 
-def Dropdown(options: List[str], onchange: Callable[[Any], None]=None, multi:bool = False):
+
+EventOption = Dict[Literal['label', 'value'], str]
+
+class EventAction(TypedDict):
+    action: Literal['select-option']
+    option: EventOption
+
+EventOptions = List[EventOption]
+EventActions = List[EventAction]
+OnChangeEvent = Callable[[EventOptions, EventActions], None]
+
+def Dropdown(options: List[str], onchange: OnChangeEvent=None, multi:bool = False):
 
     props = {'options' : options} 
 
