@@ -14,7 +14,7 @@ def AppMain():
 
     @event
     def onChange(newValue: EventOptions, actionMeta: ActionMeta):
-        print(actionMeta['action'])
+        print(actionMeta['xaction'])
         print(f"OnChange event={newValue} action={actionMeta['action']}")
 
     return html.div(
@@ -26,4 +26,3 @@ def AppMain():
 
 if __name__ == "__main__":
     run(AppMain)
-

@@ -1,4 +1,4 @@
-from typing import List, Dict, Callable, TypedDict, Literal
+from typing import List, Dict, Callable, TypedDict, Literal, Optional
 from .bundle import _Dropdown
 
 # https://react-select.com/props
@@ -18,8 +18,8 @@ ActionTypes = Literal[
 EventOptions = List[EventOption]
 
 class ActionMeta(TypedDict):
-    'action': ActionTypes
-    'option': EventOptions | None
+    action: ActionTypes
+    option: Optional[EventOptions]
 
 OnChangeEvent = Callable[[EventOptions, ActionMeta], None]
 
