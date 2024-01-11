@@ -27,7 +27,7 @@
       "stopOnEntry": false,
       "module": "pytest",
       "args": [
-        "--headed",
+        // "--headed",
         "tests/test_dropdown.py"
       ],
       "cwd": "${workspaceRoot}",

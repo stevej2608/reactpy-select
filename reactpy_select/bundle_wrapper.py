@@ -10,3 +10,4 @@ _js_module = module_from_file(
 )
 
 _Dropdown = export(_js_module, "Dropdown")
+_ExampleCounter = export(_js_module, "ExampleCounter")

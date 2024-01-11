@@ -1,5 +1,5 @@
 from typing import List, Dict, Callable, TypedDict, Literal, Optional
-from .bundle import _Dropdown
+from .bundle_wrapper import _Dropdown
 
 # https://react-select.com/props
 # https://dash.plotly.com/dash-core-components/dropdown#examples

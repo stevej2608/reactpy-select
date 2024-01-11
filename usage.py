@@ -19,7 +19,7 @@ def AppMain():
 
     return html.div(
         html.h2('Dropdown Example'),
-        Dropdown(options=options, multi=True, onchange=onChange)
+        Dropdown(options=options, multi=True, onchange=onChange, id="dd1")
     )
 
 # python usage.py
