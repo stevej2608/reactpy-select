@@ -1,8 +1,9 @@
-from typing import List, Dict, Callable, TypedDict, Literal, Optional
+from typing import List, Dict, Callable, TypedDict, Literal, Optional, Union
 from .bundle_wrapper import _Dropdown
 
 # https://react-select.com/props
 # https://dash.plotly.com/dash-core-components/dropdown#examples
+
 
 EventOption = Dict[Literal["label", "value"], str]
 
@@ -28,7 +29,7 @@ OnChangeEvent = Callable[[EventOptions, ActionMeta], None]
 
 
 def Dropdown(
-    options: List[str],
+    options: Union[List[str], EventOptions],
     id: Optional[str] = None,
     onchange: Optional[OnChangeEvent] = None,
     multi: bool = False):
