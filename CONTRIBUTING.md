@@ -14,10 +14,10 @@ examples and for the pytest tests.
 Javascript VSCODE launch configuration is provided for debugging the
 browser code. For this to work the test application needs to be 
 started with the env variable **REACTPY_DEBUG_MODE** set prior to 
-running the application:
+running the application, eg:
 
     export REACTPY_DEBUG_MODE=1 
-    python usage.py
+    python -m examples.simple
 
 Select the launch configuration **3. Launch Chrome**. You will
 now be able to set breakpoints from withing VSCODE. The javascript

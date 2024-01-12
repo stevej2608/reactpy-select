@@ -1,6 +1,6 @@
 import pytest
 from reactpy.testing import DisplayFixture
-from usage import AppMain
+from examples.simple import AppMain
 
 from .tooling.wait_stable import wait_page_stable
 
@@ -9,6 +9,8 @@ options = [
   { 'value': 'strawberry', 'label': 'Strawberry' },
   { 'value': 'vanilla', 'label': 'Vanilla' }
 ]
+
+# https://playwright.dev/python/docs/next/locators
 
 @pytest.mark.anyio
 async def test_example_dropdown(display: DisplayFixture):

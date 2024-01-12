@@ -8,7 +8,6 @@ options = [
   { 'value': 'vanilla', 'label': 'Vanilla' }
 ]
 
-
 @component
 def AppMain():
 
@@ -21,7 +20,7 @@ def AppMain():
         Dropdown(options=options, multi=True, onchange=onChange, id="dd1")
     )
 
-# python usage.py
+# python -m examples.simple
 
 if __name__ == "__main__":
     run(AppMain)
