@@ -2,11 +2,11 @@ import pytest
 from reactpy import event, Ref
 from reactpy.testing import DisplayFixture, poll
 
-from reactpy_select.dropdown import Dropdown, ActionMeta, EventOptions
+from reactpy_select.dropdown import Dropdown, ActionMeta, Options
 
 from .tooling.wait_stable import wait_page_stable
 
-options: EventOptions = [
+options: Options = [
   { 'value': 'chocolate', 'label': 'Chocolate' },
   { 'value': 'strawberry', 'label': 'Strawberry' },
   { 'value': 'vanilla', 'label': 'Vanilla' }
@@ -20,7 +20,7 @@ async def test_dropdown(display: DisplayFixture):
     selected_options = Ref([])
 
     @event
-    def onChange(newValue: EventOptions, actionMeta: ActionMeta):
+    def onChange(newValue: Options, actionMeta: ActionMeta):
         selected_options.set_current(newValue)
 
     await display.show(
