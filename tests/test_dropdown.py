@@ -1,7 +1,8 @@
-import reactpy
-from reactpy.testing import poll
+import pytest
+from reactpy.testing import DisplayFixture
+from usage import AppMain
 
-from reactpy_select.dropdown import Dropdown, ActionMeta, EventOptions
+from .tooling.wait_stable import wait_page_stable
 
 options = [
   { 'value': 'chocolate', 'label': 'Chocolate' },
@@ -9,18 +10,24 @@ options = [
   { 'value': 'vanilla', 'label': 'Vanilla' }
 ]
 
-async def test_example_counter(display):
-    options = reactpy.Ref(0)
+@pytest.mark.anyio
+async def test_example_dropdown(display: DisplayFixture):
+    await display.show(AppMain)
+    await wait_page_stable(display.page)
 
-    await display.show(
-        lambda: Dropdown(options=options, id="test-dropdown")
-    )
+    # Unselected state
 
-    client_side_button = await display.page.wait_for_selector("#test-dropdown")
-    poll_count = poll(lambda: options.current)
+    text = await display.page.locator('id=dd1').all_inner_texts()
+    assert text == ['Select...']
 
-    await client_side_button.click()
-    await poll_count.until_equals(1)
+    # Dropdown state, verify all options are listed in the dropdown
 
-    await client_side_button.click()
-    await poll_count.until_equals(2)
+    await display.page.locator('id=dd1').click()
+    text = await display.page.locator('role=listbox').all_inner_texts()
+    assert text == ['Chocolate\nStrawberry\nVanilla']
+
+    # Select an option from the dropdown and confirm the selection
+
+    await display.page.locator('text=Strawberry').click()
+    text = await display.page.locator('id=dd1').all_inner_texts()
+    assert text

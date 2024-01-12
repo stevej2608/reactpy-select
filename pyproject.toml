@@ -14,17 +14,21 @@ python = ">=3.9,<4.0.0"
 reactpy = {extras = ["starlette", "testing"], version = "^1.0.2"}
 
 [tool.poetry.group.dev.dependencies]
-twine = "^4.0.2"
 pytest = "^7.4.4"
 pytest-asyncio = "^0.23.3"
+twine = "^4.0.2"
+trio = "^0.24.0"
 
 
 [tool.pytest.ini_options]
 testpaths = "tests"
 log_cli_level = "INFO"
-filterwarnings = "ignore::DeprecationWarning"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::trio.TrioDeprecationWarning"
+]
 addopts = "-rsxX -vv"
-asyncio_mode = "auto"
+# asyncio_mode = "auto"
 
 [build-system]
 requires = ["poetry-core"]

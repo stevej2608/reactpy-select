@@ -1,9 +1,10 @@
+import pytest
 import reactpy
 from reactpy.testing import poll
 
 from reactpy_select.counter import ExampleCounter
 
-
+@pytest.mark.anyio
 async def test_example_counter(display):
     count = reactpy.Ref(0)
 

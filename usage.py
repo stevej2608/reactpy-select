@@ -14,7 +14,6 @@ def AppMain():
 
     @event
     def onChange(newValue: EventOptions, actionMeta: ActionMeta):
-        print(actionMeta['xaction'])
         print(f"OnChange event={newValue} action={actionMeta['action']}")
 
     return html.div(
