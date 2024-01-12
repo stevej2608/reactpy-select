@@ -9,5 +9,4 @@ _js_module = module_from_file(
     fallback="⏳",
 )
 
-_Dropdown = export(_js_module, "Dropdown")
-_ExampleCounter = export(_js_module, "ExampleCounter")
+_Dropdown, _ExampleCounter = export(_js_module, ["Dropdown", "ExampleCounter"])
