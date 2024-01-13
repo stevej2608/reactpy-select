@@ -13,6 +13,14 @@ options = [
   { 'value': 'mint-chocolate-chip', 'label': 'Mint chocolate chip', 'rating': 'crazy' },
 ]
 
+theme = {
+  "borderRadius": 0,
+  "colors": {
+    "primary25": "hotpink",
+    "primary": "black"
+  }
+}
+
 
 @component
 def AppMain():
@@ -31,6 +39,7 @@ def AppMain():
             options=options,
             class_name="basic-multi-select",
             class_name_prefix="select",
+            theme=theme,
             id="dd1"
             )
     )

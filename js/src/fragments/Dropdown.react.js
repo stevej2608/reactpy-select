@@ -5,8 +5,28 @@ import Select from 'react-select'
 // https://dash.plotly.com/dash-core-components/dropdown#examples
 
 export function Dropdown(props) {
-    const {options, multi} = props;
+    const local_props  = {...props};
+
+    console.log('Dropdown()')
+
+    if ('theme' in local_props) {
+        const tcb = function(default_theme) {
+            const custom_theme =  {
+                ...default_theme,
+                ...props.theme,
+                colors: {
+                    ...default_theme.colors,
+                    ...props.theme.colors,
+                }
+            }
+            return custom_theme
+          }
+
+          local_props.theme = tcb
+    }
+
+
     return (
-        <Select {...props}/>
+        <Select {...local_props}/>
     );
 };
