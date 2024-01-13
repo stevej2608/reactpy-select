@@ -25,7 +25,10 @@ class ActionMeta(TypedDict):
 
 OnChangeEvent = Callable[[Options, ActionMeta], None]
 
-# https://codesandbox.io/p/sandbox/codesandboxer-example-rx8xjs?file=%2Fexample.tsx%3A8%2C5-8%2C56
+# Theme customization, see:
+#   https://react-select.com/styles#overriding-the-theme
+#   https://github.com/JedWatson/react-select/blob/master/packages/react-select/src/theme.ts
+#
 
 def Dropdown(
     options: Options,
@@ -35,8 +38,8 @@ def Dropdown(
     id: Optional[str] = None,
     multi: bool = False,
     name: Optional[str] = None,
-    theme:  Optional[Dict] = None,
     onchange: Optional[OnChangeEvent] = None,
+    theme:  Optional[Dict] = None,
     ):
 
     props: Dict = {"options": options}

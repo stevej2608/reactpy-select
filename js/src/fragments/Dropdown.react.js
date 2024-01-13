@@ -2,31 +2,33 @@ import React from 'react'
 import Select from 'react-select'
 
 // https://react-select.com/props
-// https://dash.plotly.com/dash-core-components/dropdown#examples
 
 export function Dropdown(props) {
-    const local_props  = {...props};
+    const local_props = { ...props };
 
     console.log('Dropdown()')
 
-    if ('theme' in local_props) {
-        const tcb = function(default_theme) {
-            const custom_theme =  {
-                ...default_theme,
+    // https://github.com/JedWatson/react-select/blob/master/packages/react-select/src/theme.ts
+
+    if (local_props.theme) {
+        local_props.theme = function (base_theme) {
+            return {
+                ...base_theme,
                 ...props.theme,
                 colors: {
-                    ...default_theme.colors,
+                    ...base_theme.colors,
                     ...props.theme.colors,
+                },
+                spacing: {
+                    ...base_theme.spacing,
+                    ...props.theme.spacing,
                 }
             }
-            return custom_theme
-          }
-
-          local_props.theme = tcb
+        }
     }
 
 
     return (
-        <Select {...local_props}/>
+        <Select {...local_props} />
     );
 };

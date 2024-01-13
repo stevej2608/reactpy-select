@@ -9,6 +9,7 @@
       "type": "python",
       "request": "launch",
       "module": "examples.simple",
+      "env": {"REACTPY_DEBUG_MODE": "1"},
       "justMyCode": false,
       "console": "internalConsole",
       "internalConsoleOptions": "openOnSessionStart",
@@ -31,7 +32,6 @@
         "tests/test_counter.py"
       ],
       "cwd": "${workspaceRoot}",
-      "env": {},
       "envFile": "${workspaceRoot}/.env",
       "console": "internalConsole",
       "internalConsoleOptions": "openOnSessionStart",
