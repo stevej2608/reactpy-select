@@ -17,7 +17,7 @@ def AppMain():
 
     return html.div(
         html.h2('Dropdown Example'),
-        Dropdown(options=options, multi=True, onchange=onChange, id="dd1")
+        Dropdown(options=options, onchange=onChange, id="dd1", class_name_prefix="react-select")
     )
 
 # python -m examples.simple

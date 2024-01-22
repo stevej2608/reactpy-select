@@ -23,6 +23,12 @@ export default {
   
    ],
 
+   onwarn(warning, warn) {
+      // suppress eval warnings
+      if (warning.code === 'EVAL') return
+      warn(warning)
+    },
+
    // https://www.mixmax.com/engineering/rollup-externals
 
    // external: ['react', 'react-dom'],

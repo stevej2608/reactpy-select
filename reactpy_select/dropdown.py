@@ -39,6 +39,7 @@ def Dropdown(
     multi: bool = False,
     name: Optional[str] = None,
     onchange: Optional[OnChangeEvent] = None,
+    styles:  Optional[str] = None,
     theme:  Optional[Dict] = None,
     ):
 
@@ -64,6 +65,9 @@ def Dropdown(
 
     if onchange:
         props.update({"onChange": onchange})
+
+    if styles:
+        props.update({"styles": styles})
 
     if theme:
         props.update({"theme": theme})
