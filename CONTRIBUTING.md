@@ -16,12 +16,21 @@ browser code. For this to work the test application needs to be
 started with the env variable **REACTPY_DEBUG_MODE** set prior to 
 running the application, eg:
 
-    export REACTPY_DEBUG_MODE=1 
+    export REACTPY_DEBUG_MODE_JS=1 
     python -m examples.simple
 
-Select the launch configuration **3. Launch Chrome**. You will
-now be able to set breakpoints from withing VSCODE. The javascript
+Select the launch configuration **3a. Launch Chrome/Py**. You will
+now be able to set breakpoints from within VSCODE. The javascript
 source code is in **./js/src/*.js**
+
+In addition, a simple react.js demo app *js\src\demo\App.jsx* is used to
+debug the reactpy component without having to run python. The built-in
+Vite server is used:
+
+    npm run dev
+
+Select the launch configuration **3b. Launch Chrome/JS**. You will
+now be able to set breakpoints from within VSCODE.
 
 ## Testing
 

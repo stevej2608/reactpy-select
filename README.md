@@ -8,6 +8,10 @@ A minimal component wrapper for [react-select].
 
     pip install reactpy-select
 
+## TODO
+
+- [ ] Fix Vite/Rollup export regex incompatibility (reactpy\web\utils.py#L148)
+
 ## Documentation
 
 The [Plotly/Dash] project has an extensive [Dash Core Components] library. I can

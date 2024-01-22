@@ -75,7 +75,7 @@
     },
 
     {
-      "name": "3 Launch Chrome",
+      "name": "3a. Launch Chrome/Py",
       "request": "launch",
       "type": "chrome",
       "url": " http://127.0.0.1:8000",
@@ -91,6 +91,21 @@
         "*": "${workspaceFolder}/_/*",
       }
     },
+
+    {
+      "name": "3b.Launch Chrome/JS",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000/",
+      "webRoot": "${workspaceFolder}/js",
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**"
+      ]
+    },
+
+
+
 
   ]
 }
