@@ -78,7 +78,7 @@ export function Dropdown(props) {
             }),
           };
 
-        local_props.styles = customStyles 
+        // local_props.styles = customStyles 
     }
 
 

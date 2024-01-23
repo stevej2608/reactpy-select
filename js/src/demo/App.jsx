@@ -6,10 +6,30 @@ const options = [
   { value: 'vanilla', label: 'Vanilla' }
 ]
 
+// https://blog.logrocket.com/getting-started-react-select/#adding-custom-styles-react-select-components
+
+const customStyles = {
+  option: (defaultStyles, state) => ({
+    ...defaultStyles,
+    color: state.isSelected ? "#212529" : "#fff",
+    backgroundColor: state.isSelected ? "#a0a0a0" : "#212529",
+  }),
+
+  control: (defaultStyles) => ({
+    ...defaultStyles,
+    backgroundColor: "#212529",
+    padding: "10px",
+    border: "none",
+    boxShadow: "none",
+  }),
+  singleValue: (defaultStyles) => ({ ...defaultStyles, color: "#fff" }),
+};
+
+
 function App() {
 
   return (
-    <Dropdown options={options}/>
+    <Dropdown options={options} styles={customStyles}/>
   )
 }
 
