@@ -32,7 +32,7 @@ OnChangeEvent = Callable[[Options, ActionMeta], None]
 
 def Dropdown(
     options: Options,
-    close_menu_on_select: Optional[bool] = True,
+    close_menu_onselect: Optional[bool] = True,
     class_name: Optional[str] = None,
     class_name_prefix: Optional[str] = None,
     default_value: Options = None,
@@ -47,7 +47,7 @@ def Dropdown(
 
     Args:
         options (Options): _description_
-        close_menu_on_select (Optional[bool], optional): _description_. Defaults to True.
+        close_menu_onselect (Optional[bool], optional): _description_. Defaults to True.
         class_name (Optional[str], optional): _description_. Defaults to None.
         class_name_prefix (Optional[str], optional): _description_. Defaults to None.
         default_value (Options, optional): _description_. Defaults to None.
@@ -135,7 +135,7 @@ def Dropdown(
 
     props: Dict = {"options": options}
 
-    if close_menu_on_select is False:
+    if close_menu_onselect is False:
         props.update({'closeMenuOnSelect': False})
 
     if class_name:
