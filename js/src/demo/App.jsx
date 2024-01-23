@@ -27,7 +27,6 @@ const customStyles = {
 
 
 function App() {
-
   return (
     <Dropdown options={options} styles={customStyles}/>
   )
