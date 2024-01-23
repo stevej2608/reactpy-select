@@ -1,4 +1,5 @@
 import React from 'react'
+import chroma from 'chroma-js';
 import Select from 'react-select'
 
 // https://react-select.com/props
@@ -27,58 +28,47 @@ export function Dropdown(props) {
         }
     }
 
-    // https://github.com/JedWatson/react-select/blob/master/packages/react-select/src/styles.ts#L52
-    //
-    // https://www.regextester.com/
-    // /(\w+):\s\(defaultStyles[\s\S]*?\}\)/g
-
     if (local_props.styles) {
 
         /**
+         * https://react-select.com/components#adjusting-the-styling
          * 
-         *     clearIndicator: ClearIndicatorProps<Option, IsMulti, Group>;
-         *     container: ContainerProps<Option, IsMulti, Group>;
-         *     control: ControlProps<Option, IsMulti, Group>;
-         *     dropdownIndicator: DropdownIndicatorProps<Option, IsMulti, Group>;
-         *     group: GroupProps<Option, IsMulti, Group>;
-         *     groupHeading: GroupHeadingProps<Option, IsMulti, Group>;
-         *     indicatorsContainer: IndicatorsContainerProps<Option, IsMulti, Group>;
-         *     indicatorSeparator: IndicatorSeparatorProps<Option, IsMulti, Group>;
-         *     input: InputProps<Option, IsMulti, Group>;
-         *     loadingIndicator: LoadingIndicatorProps<Option, IsMulti, Group>;
-         *     loadingMessage: NoticeProps<Option, IsMulti, Group>;
-         *     menu: MenuProps<Option, IsMulti, Group>;
-         *     menuList: MenuListProps<Option, IsMulti, Group>;
-         *     menuPortal: PortalStyleArgs;
-         *     multiValue: MultiValueProps<Option, IsMulti, Group>;
-         *     multiValueLabel: MultiValueProps<Option, IsMulti, Group>;
-         *     multiValueRemove: MultiValueProps<Option, IsMulti, Group>;
-         *     noOptionsMessage: NoticeProps<Option, IsMulti, Group>;
-         *     option: OptionProps<Option, IsMulti, Group>;
-         *     placeholder: PlaceholderProps<Option, IsMulti, Group>;
-         *     singleValue: SingleValueProps<Option, IsMulti, Group>;
-         *     valueContainer: ValueContainerProps<Option, IsMulti, Group>;
+         *     clearIndicator
+         *     container
+         *     control
+         *     dropdownIndicator
+         *     group
+         *     groupHeading
+         *     indicatorsContainer
+         *     indicatorSeparator
+         *     input
+         *     loadingIndicator
+         *     loadingMessage
+         *     menu
+         *     menuList
+         *     menuPortal
+         *     multiValue
+         *     multiValueLabel
+         *     multiValueRemove
+         *     noOptionsMessage
+         *     option
+         *     placeholder
+         *     singleValue
+         *     valueContainer
          */
 
-        const customStyles = {
-            option: (defaultStyles, state) => ({
-              ...defaultStyles,
-              ...props.styles.option
-            }),
-        
-            control: (defaultStyles) => ({
-              ...defaultStyles,
-              ...props.styles.control
+        const customStyles = {}
 
-            }),
+        for (const [key, code] of Object.entries(local_props.styles)) {
+            try {  
+                customStyles[key] =  eval(code)
+             } catch ( e ) { 
+                console.log('eval error key=%s, error=%s', key, e)
+             }
+        }
 
-            singleValue: (defaultStyles) => ({
-              ...defaultStyles,
-              ...props.styles.singleValue 
-            }),
-          };
+        local_props.styles = customStyles
 
-        // local_props.styles = customStyles 
     }
 
 

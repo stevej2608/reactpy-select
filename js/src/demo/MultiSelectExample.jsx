@@ -1,5 +1,5 @@
 import chroma from 'chroma-js';
-import Select from 'react-select';
+import { Dropdown } from '../fragments/Dropdown.react'
 
 // Multi Select Example
 // 
@@ -19,8 +19,8 @@ const colourOptions = [
 ];
 
 const colourStyles = {
-  control: (styles) => ({ ...styles, backgroundColor: 'white' }),
-  option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+  control: `(styles) => ({ ...styles, backgroundColor: 'white' })`,
+  option: `(styles, { data, isDisabled, isFocused, isSelected }) => {
     const color = chroma(data.color);
     return {
       ...styles,
@@ -48,32 +48,34 @@ const colourStyles = {
             : color.alpha(0.3).css()
           : undefined,
       },
-    };
-  },
-  multiValue: (styles, { data }) => {
+    }
+  }`,
+  multiValue: `(styles, { data }) => {
     const color = chroma(data.color);
     return {
       ...styles,
       backgroundColor: color.alpha(0.1).css(),
-    };
-  },
-  multiValueLabel: (styles, { data }) => ({
-    ...styles,
-    color: data.color,
-  }),
-  multiValueRemove: (styles, { data }) => ({
+    }
+  }`,
+  multiValueLabel: `(styles, { data }) => {
+    return {
+      ...styles,
+      color: data.color
+    }
+  }`,
+  multiValueRemove: `(styles, { data }) => ({
     ...styles,
     color: data.color,
     ':hover': {
       backgroundColor: data.color,
       color: 'white',
-    },
-  }),
+      },
+  })`,
 };
 
 function App() {
   return (
-    <Select
+    <Dropdown
       closeMenuOnSelect={false}
       defaultValue={[colourOptions[0], colourOptions[1]]}
       isMulti
