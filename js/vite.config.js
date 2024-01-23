@@ -16,23 +16,8 @@ export default defineConfig(({ command, mode }) => {
     },
 
     build: {
-      sourcemap: isDev ? false : false,
+      sourcemap: isDev ? 'inline' : false,
       minify: 'terser',
-      // minify: isDev ? false : false,
-
-      // https://vitejs.dev/config/build-options#build-terseroptions
-      // https://terser.org/docs/api-reference/#minify-options
-      // https://terser.org/docs/options/#mangle-properties-options
-      // terserOptions: {
-      //   keep_classnames: true,
-      //   keep_fnames: true, 
-      //   mangle:{ 
-      //       properties: {
-      //           reserved: ["chroma"]
-      //       }
-      //   }
-      // },
-
       outDir: "../reactpy_select",
       emptyOutDir : false,
 

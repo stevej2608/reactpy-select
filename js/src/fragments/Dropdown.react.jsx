@@ -87,5 +87,10 @@ function Dropdown(props) {
     );
 }
 
+// Adding chroma to the exports stops it being mangled
+// by Vite. Chroma is used by the Dropdown 
+// custom style functions. These functions are 
+// evaluated dynamically, they will fail if chroma 
+// is mangled.
 
 export {Dropdown, chroma}
