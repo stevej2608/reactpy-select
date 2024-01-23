@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import htm from "htm";
 
-import { Dropdown } from './fragments/Dropdown.react'
+import { Dropdown, chroma } from './fragments/Dropdown.react'
 import { ExampleCounter } from "./fragments/ExampleCounter.react";
 
 
@@ -21,4 +21,4 @@ export function bind(node, config) {
   }
 }
 
-export { Dropdown, ExampleCounter }
+export { Dropdown, ExampleCounter, chroma }

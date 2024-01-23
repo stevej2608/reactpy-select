@@ -32,6 +32,7 @@ OnChangeEvent = Callable[[Options, ActionMeta], None]
 
 def Dropdown(
     options: Options,
+    close_menu_on_select: Optional[bool] = True,
     class_name: Optional[str] = None,
     class_name_prefix: Optional[str] = None,
     default_value: Options = None,
@@ -39,11 +40,103 @@ def Dropdown(
     multi: bool = False,
     name: Optional[str] = None,
     onchange: Optional[OnChangeEvent] = None,
-    styles:  Optional[str] = None,
+    styles:  Optional[Dict] = None,
     theme:  Optional[Dict] = None,
     ):
+    """ReactPy wrapper for react-select component
+
+    Args:
+        options (Options): _description_
+        close_menu_on_select (Optional[bool], optional): _description_. Defaults to True.
+        class_name (Optional[str], optional): _description_. Defaults to None.
+        class_name_prefix (Optional[str], optional): _description_. Defaults to None.
+        default_value (Options, optional): _description_. Defaults to None.
+        id (Optional[str], optional): _description_. Defaults to None.
+        multi (bool, optional): _description_. Defaults to False.
+        name (Optional[str], optional): _description_. Defaults to None.
+        onchange (Optional[OnChangeEvent], optional): _description_. Defaults to None.
+        styles (Optional[Dict], optional): _description_. Defaults to None.
+        theme (Optional[Dict], optional): _description_. Defaults to None.
+
+    ```
+    Custom Styles: 
+
+    The dropdown UI elements can be custom styled by overriding
+    the default styles supplied by the react-select callback.
+    
+    A custom Javascript style functions are mapped onto one or more of the keys
+    listed below. React select calls the functions, passing in the
+    default styles for the associated element. The custom function
+    replaces the defaults as required.
+
+    example: 
+
+        colourStyles = {
+            "control": (styles) => ({ ...styles, backgroundColor: 'white' }),
+
+            "multiValue": (styles, { data }) => {
+                const color = chroma(data.color);
+                return {
+                ...styles,
+                backgroundColor: color.alpha(0.1).css(),
+                }
+            },
+
+            "multiValueLabel": (styles, { data }) => {
+                return {
+                ...styles,
+                color: data.color
+                }
+            },
+
+            "multiValueRemove": (styles, { data }) => ({
+                ...styles,
+                color: data.color,
+                ':hover': {
+                backgroundColor: data.color,
+                color: 'white',
+                },
+            }),
+        }
+
+        Dropdown(styles=colourStyles)
+
+    See the following link for docs and examples. 
+    
+    https://react-select.com/components#adjusting-the-styling
+    
+        clearIndicator
+        container
+        control
+        dropdownIndicator
+        group
+        groupHeading
+        indicatorsContainer
+        indicatorSeparator
+        input
+        loadingIndicator
+        loadingMessage
+        menu
+        menuList
+        menuPortal
+        multiValue
+        multiValueLabel
+        multiValueRemove
+        noOptionsMessage
+        option
+        placeholder
+        singleValue
+        valueContainer
+    ```
+
+    Returns:
+        _type_: _description_
+    """
 
     props: Dict = {"options": options}
+
+    if close_menu_on_select is False:
+        props.update({'closeMenuOnSelect': False})
 
     if class_name:
         props.update({'className': class_name})
