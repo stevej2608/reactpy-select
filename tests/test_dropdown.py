@@ -2,7 +2,7 @@ import pytest
 from reactpy import event, Ref
 from reactpy.testing import DisplayFixture, poll
 
-from reactpy_select.dropdown import Dropdown, ActionMeta, Options
+from reactpy_select.select import Select, ActionMeta, Options
 
 from .tooling.wait_stable import wait_page_stable
 
@@ -24,7 +24,7 @@ async def test_dropdown(display: DisplayFixture):
         selected_options.set_current(newValue)
 
     await display.show(
-        lambda: Dropdown(options=options, multi=True, onchange=onChange, id="dd1")
+        lambda: Select(options=options, multi=True, onchange=onChange, id="dd1")
     )
 
     await wait_page_stable(display.page)

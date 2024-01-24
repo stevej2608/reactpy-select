@@ -1,5 +1,5 @@
 from reactpy import html, component, event, run
-from reactpy_select.dropdown import Dropdown, ActionMeta, Options
+from reactpy_select.select import Select, ActionMeta, Options
 
 # Python clone of one of the more complex react-select
 # custom style examples.
@@ -88,7 +88,7 @@ def AppMain():
 
     return html.div(
         html.h2('Multi Select Example (Styles)'),
-        Dropdown(
+        Select(
             close_menu_onselect=False,
             default_value=[colourOptions[0], colourOptions[1]],
             multi=True,

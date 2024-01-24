@@ -1,6 +1,6 @@
 from reactpy import html, component, event, run
 
-from reactpy_select.dropdown import Dropdown, ActionMeta, Options
+from reactpy_select.select import Select, ActionMeta, Options
 
 options = [
   { 'value': 'chocolate', 'label': 'Chocolate' },
@@ -17,7 +17,7 @@ def AppMain():
 
     return html.div(
         html.h2('Dropdown Example'),
-        Dropdown(options=options, onchange=onChange, id="dd1", class_name_prefix="react-select")
+        Select(options=options, onchange=onChange, id="dd1", class_name_prefix="react-select")
     )
 
 # python -m examples.simple

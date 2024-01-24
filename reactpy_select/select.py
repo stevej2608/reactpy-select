@@ -1,5 +1,5 @@
 from typing import List, Dict, Callable, TypedDict, Literal, Optional
-from .bundle_wrapper import _Dropdown
+from .bundle_wrapper import _Select
 
 # https://react-select.com/props
 # https://dash.plotly.com/dash-core-components/dropdown#examples
@@ -30,7 +30,7 @@ OnChangeEvent = Callable[[Options, ActionMeta], None]
 #   https://github.com/JedWatson/react-select/blob/master/packages/react-select/src/theme.ts
 #
 
-def Dropdown(
+def Select(
     options: Options,
     close_menu_onselect: Optional[bool] = True,
     class_name: Optional[str] = None,
@@ -165,4 +165,4 @@ def Dropdown(
     if theme:
         props.update({"theme": theme})
 
-    return _Dropdown(props)
+    return _Select(props)

@@ -1,10 +1,9 @@
-import React from 'react'
 import chroma from 'chroma-js';
 import Select from 'react-select'
 
 // https://react-select.com/props
 
-function Dropdown(props) {
+function SelectWrapper(props) {
     const local_props = { ...props };
 
     // console.log('Dropdown(styles)')
@@ -93,4 +92,4 @@ function Dropdown(props) {
 // evaluated dynamically, they will fail if chroma 
 // is mangled.
 
-export {Dropdown, chroma}
+export {SelectWrapper as Select, chroma}

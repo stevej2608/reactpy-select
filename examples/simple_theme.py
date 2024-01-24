@@ -1,6 +1,6 @@
 from reactpy import html, component, event, run
 
-from reactpy_select.dropdown import Dropdown, ActionMeta, Options
+from reactpy_select.select import Select, ActionMeta, Options
 
 # https://react-select.com/styles#overriding-the-theme
 # https://codesandbox.io/p/sandbox/codesandboxer-example-rx8xjs?file=%2Fdocs%2Fdata.ts%3A11%2C53-11%2C69
@@ -32,7 +32,7 @@ def AppMain():
 
     return html.div(
         html.h2('Dropdown Example'),
-        Dropdown(
+        Select(
             default_value=[options[0], options[1]],
             multi=True,
             name="flavours",

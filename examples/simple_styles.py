@@ -1,6 +1,6 @@
 from reactpy import html, component, event, run
 
-from reactpy_select.dropdown import Dropdown, ActionMeta, Options
+from reactpy_select.select import Select, ActionMeta, Options
 
 # https://blog.logrocket.com/getting-started-react-select/#adding-custom-styles-react-select-components
 
@@ -68,7 +68,7 @@ def AppMain():
 
     return html.div(
         html.h2('Dropdown Example (Styles)'),
-        Dropdown(
+        Select(
             default_value=[options[0], options[1]],
             multi=True,
             name="flavours",
