@@ -59,25 +59,12 @@ def update_graph(tickers=None):
             bollinger_traces = [{
                 'x': dff['Date'], 'y': y,
                 'type': 'scatter', 'mode': 'lines',
-                'line': {'width': 1, 'color': colorscale[(i*2) % len(colorscale)]},
+                'line': {'width': 2, 'color': colorscale[(i*2) % len(colorscale)]},
                 'hoverinfo': 'none',
                 'legendgroup': ticker,
                 'showlegend': (i == 0),
-                'name': f'{ticker} - bollinger bands'
+                'name': f'{ticker} - Bollinger Bands'
             } for i, y in enumerate(bb_bands)]
-
-            # https://plotly.com/python-api-reference/generated/plotly.express.line
-            # https://plotly.com/python/line-charts/
-            # https://plotly.com/python/candlestick-charts/
-            # https://plotly.com/python/range-slider/
-
-            # fig = px.line(
-            #     [candlestick] + bollinger_traces,
-            #     orientation='h',
-            #     width=600,
-            #     height=400,
-            #     title='Line Chart'
-            # )
 
             # https://plotly.com/python/candlestick-charts/
 
@@ -87,16 +74,30 @@ def update_graph(tickers=None):
                         go.Line(bollinger_traces[2]),
                         go.Candlestick(candlestick)
                     ])
+            
+            fig.update_layout(
+                legend=dict(
+                    bgcolor='White',
+                    yanchor="top",
+                    y=1.00,
+                    xanchor="left",
+                    x=0.00
+                ),
+                plot_bgcolor='rgba(0, 0, 0, 0)',
+                paper_bgcolor='rgba(0, 0, 0, 0)',
+                margin={'b': 0, 'r': 10, 'l': 60, 't': 20},
+            )
 
+            fig.update_xaxes(showgrid=True, gridwidth=1, gridcolor='LightGray')
+            fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='LightGray')
 
             # Create an html object in memory from fig.
 
             buffer = StringIO()
-            fig.write_html(buffer, include_plotlyjs='cdn')
+            fig.write_html(buffer, include_plotlyjs='cdn', config={'displayModeBar': False})
             fig_html = buffer.getvalue()
 
             graphs.append(utils.html_to_vdom(fig_html))
-            graphs.append(html.br())
 
     return html.div(graphs)
 
@@ -123,7 +124,6 @@ def AppMain():
             options=tickers,
             multi=True
             ),
-        html.br(),
         html.div({'id': 'graphs'}, update_graph([val['value'] for val in values]))
     )
 
