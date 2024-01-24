@@ -49,14 +49,14 @@ def AppMain():
 - [X] Themes
 
 
-### [Custom Styling]
+### Custom Styling
 
-[react-select] uses a Javascript callback mechanism to allow the component style to be 
-customized. All aspects of the select component can be customized. 
+[react-select] uses a JavaScript callback mechanism to allow the component style to be 
+customized. All aspects of the select component can be customized. See [Adjusting the Styling] 
+on the [react-select] website for examples. 
 
-See [Adjusting the Styling] on the [react-select] website for examples. In reactpy
-the javascript is wrapped in a multi-line python string. Javascript code can
-be pasted into the string without modification.
+In reactpy the JavaScript is wrapped in a multi-line python string. Existing JavaScript 
+code can be pasted into the string without modification.
 
 ```
 STYLES = {
@@ -77,10 +77,9 @@ STYLES = {
     'singleValue': '''(defaultStyles) => ({ ...defaultStyles, color: "#fff" })''',
   }
 
-    Select(
-        ...
-        styles=STYLES,
-        )
+@component
+def AppMain():
+    return Select(styles=STYLES)
 
 ```
 
