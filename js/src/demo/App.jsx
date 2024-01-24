@@ -1,4 +1,4 @@
-import { Dropdown } from '../fragments/Dropdown.react'
+import { Select } from '../fragments/Select.react'
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -28,7 +28,7 @@ const customStyles = {
 
 function App() {
   return (
-    <Dropdown options={options} styles={customStyles}/>
+    <Select options={options} styles={customStyles}/>
   )
 }
 

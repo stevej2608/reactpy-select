@@ -9,6 +9,8 @@ from reactpy_select.select import Select, ActionMeta
 from utils.fast_server import run
 from utils.options import ServerOptions
 
+from .dash_dropdown_example import colourStyles
+
 # ReactPy clone of the classic Plotly/Dash Stock Tickers Demo App
 #
 # See https://github.com/plotly/dash-stock-tickers-demo-app
@@ -124,7 +126,8 @@ def AppMain():
             default_value=values,
             onchange=on_change,
             options=tickers,
-            multi=True
+            multi=True,
+            styles=colourStyles
             ),
         html.div({'id': 'graphs'}, update_graph([val['value'] for val in values]))
     )

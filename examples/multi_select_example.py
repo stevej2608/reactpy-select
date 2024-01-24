@@ -87,7 +87,7 @@ def AppMain():
         print(f"OnChange event={newValue} action={actionMeta['action']}")
 
     return html.div(
-        html.h2('Multi Select Example (Styles)'),
+        html.h2('Multi Select Example (Custom Styles)'),
         Select(
             close_menu_onselect=False,
             default_value=[colourOptions[0], colourOptions[1]],

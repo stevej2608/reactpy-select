@@ -1,5 +1,5 @@
 import chroma from 'chroma-js';
-import { Dropdown } from '../fragments/Dropdown.react'
+import { Select } from '../fragments/Select.react'
 
 // Multi Select Example
 // 
@@ -75,7 +75,7 @@ const colourStyles = {
 
 function App() {
   return (
-    <Dropdown
+    <Select
       closeMenuOnSelect={false}
       defaultValue={[colourOptions[0], colourOptions[1]]}
       isMulti
