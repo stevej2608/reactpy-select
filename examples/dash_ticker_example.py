@@ -24,6 +24,7 @@ except Exception:
 
 colorscale = cl.scales['9']['qual']['Paired']
 
+
 def bbands(price, window_size=10, num_of_std=5):
     rolling_mean = price.rolling(window=window_size).mean()
     rolling_std = price.rolling(window=window_size).std()
@@ -74,7 +75,7 @@ def update_graph(tickers=None):
                         go.Line(bollinger_traces[2]),
                         go.Candlestick(candlestick)
                     ])
-            
+
             fig.update_layout(
                 legend=dict(
                     bgcolor='White',
@@ -114,7 +115,6 @@ def AppMain():
     def on_change(selectedTickers: ServerOptions, actionMeta: ActionMeta):
         set_values(selectedTickers)
 
-
     return html.div(
         html.h2('Finance Explorer'),
         html.br(),
@@ -131,5 +131,6 @@ def AppMain():
 
 
 if __name__ == '__main__':
-    options = ServerOptions(head=[PLOTLY_JS])
+    title=html.title("Ticker Example")
+    options = ServerOptions(head=[PLOTLY_JS, title])
     run(AppMain, options=options)
