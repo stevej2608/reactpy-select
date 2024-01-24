@@ -4,17 +4,19 @@ import plotly.graph_objects as go
 import pandas as pd
 import colorlover as cl
 from reactpy import html, component, event, use_state, utils
-from reactpy_select.dropdown import Dropdown, ActionMeta, Options
-
+from reactpy_select.dropdown import Dropdown, ActionMeta
 
 from utils.fast_server import run
 from utils.options import ServerOptions
+
+# ReactPy clone of the classic Plotly/Dash Stock Tickers Demo App
+#
+# See https://github.com/plotly/dash-stock-tickers-demo-app
 
 PLOTLY_JS = html.script({
     'src': 'https://cdn.plot.ly/plotly-latest.min.js',
     'charset': 'utf-8'
 })
-
 
 try:
     df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/dash-stock-ticker-demo.csv')
@@ -24,14 +26,12 @@ except Exception:
 
 colorscale = cl.scales['9']['qual']['Paired']
 
-
 def bbands(price, window_size=10, num_of_std=5):
     rolling_mean = price.rolling(window=window_size).mean()
     rolling_std = price.rolling(window=window_size).std()
     upper_band = rolling_mean + (rolling_std*num_of_std)
     lower_band = rolling_mean - (rolling_std*num_of_std)
     return rolling_mean, upper_band, lower_band
-
 
 def update_graph(tickers=None):
     tickers = tickers or []
@@ -128,7 +128,6 @@ def AppMain():
     )
 
 # python -m examples.dash_ticker_example
-
 
 if __name__ == '__main__':
     title=html.title("Ticker Example")
