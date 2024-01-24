@@ -46,7 +46,8 @@ def AppMain():
         Select(
             multi=True,
             options=TICKERS,
-            styles=colourStyles
+            styles=colourStyles,
+            is_searchable = False
             )
     )
 

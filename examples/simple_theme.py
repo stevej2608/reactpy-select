@@ -33,15 +33,11 @@ def AppMain():
     return html.div(
         html.h2('Dropdown Example (Theme)'),
         Select(
-            default_value=[options[0], options[1]],
+            value=[options[0], options[1]],
             multi=True,
-            name="flavours",
             onchange=onChange,
             options=options,
-            class_name="basic-multi-select",
-            class_name_prefix="select",
-            theme=theme,
-            id="dd1"
+            theme=theme
             )
     )
 

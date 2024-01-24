@@ -37,12 +37,17 @@ def Select(
     class_name_prefix: Optional[str] = None,
     default_value: Options = None,
     id: Optional[str] = None,
+    is_clearable: Optional[bool] = None,
+    is_disabled: Optional[bool] = None,
+    is_loading: Optional[bool] = None,
+    is_searchable: Optional[bool] = None,
     multi: bool = False,
     name: Optional[str] = None,
     onchange: Optional[OnChangeEvent] = None,
     placeholder: Optional[str] = None,
     styles:  Optional[Dict] = None,
     theme:  Optional[Dict] = None,
+    value: Options = None,
     ):
     """ReactPy wrapper for react-select component
 
@@ -53,11 +58,17 @@ def Select(
         class_name_prefix (Optional[str], optional): _description_. Defaults to None.
         default_value (Options, optional): _description_. Defaults to None.
         id (Optional[str], optional): _description_. Defaults to None.
+        is_clearable (Optional[bool], optional): _description_. Defaults to None.
+        is_disabled (Optional[bool], optional): _description_. Defaults to None.
+        is_loading (Optional[bool], optional): _description_. Defaults to None.
+        is_searchable (Optional[bool], optional): _description_. Defaults to None.
         multi (bool, optional): _description_. Defaults to False.
         name (Optional[str], optional): _description_. Defaults to None.
         onchange (Optional[OnChangeEvent], optional): _description_. Defaults to None.
+        placeholder (Optional[str], optional): _description_. Defaults to None.
         styles (Optional[Dict], optional): _description_. Defaults to None.
         theme (Optional[Dict], optional): _description_. Defaults to None.
+        value (Options, optional): _description_. Defaults to None.
 
     ```
     Custom Styles: 
@@ -148,6 +159,18 @@ def Select(
     if default_value:
         props.update({'defaultValue': default_value})
 
+    if is_clearable is not None:
+        props.update({'isClearable': is_clearable})
+
+    if is_disabled is not None:
+        props.update({'isDisabled': is_disabled})
+
+    if is_loading is not None:
+        props.update({'isLoading': is_loading})
+
+    if is_searchable is not None:
+        props.update({'isSearchable': is_searchable})
+
     if id:
         props.update({'id': id})
 
@@ -168,5 +191,8 @@ def Select(
 
     if theme:
         props.update({"theme": theme})
+
+    if value:
+        props.update({'value': value})
 
     return _Select(props)
