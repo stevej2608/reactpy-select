@@ -31,7 +31,7 @@ def AppMain():
         print(f"OnChange event={newValue} action={actionMeta['action']}")
 
     return html.div(
-        html.h2('Dropdown Example'),
+        html.h2('Dropdown Example (Theme)'),
         Select(
             default_value=[options[0], options[1]],
             multi=True,

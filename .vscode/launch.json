@@ -9,7 +9,7 @@
       "type": "python",
       "request": "launch",
       "module": "examples.simple",
-      "env": {"REACTPY_DEBUG_MODE": "1"},
+      // "env": {"REACTPY_DEBUG_MODE": "1"},
       "justMyCode": false,
       "console": "internalConsole",
       "internalConsoleOptions": "openOnSessionStart",
@@ -22,7 +22,58 @@
     },
 
     {
-      "name": "1b. examples/dash_ticker_example.py",
+      "name": "1b. examples/simple_styles.py",
+      "type": "python",
+      "request": "launch",
+      "module": "examples.simple_styles",
+      // "env": {"REACTPY_DEBUG_MODE": "1"},
+      "justMyCode": false,
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart",
+      "serverReadyAction": {
+        "pattern": "Uvicorn running on\\s+(https?://\\S+)",
+        "uriFormat": "%s/",
+        "action": "debugWithChrome",
+        "killOnServerStop": true
+      }
+    },
+
+    {
+      "name": "1c. examples/simple_theme.py",
+      "type": "python",
+      "request": "launch",
+      "module": "examples.simple_theme",
+      // "env": {"REACTPY_DEBUG_MODE": "1"},
+      "justMyCode": false,
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart",
+      "serverReadyAction": {
+        "pattern": "Uvicorn running on\\s+(https?://\\S+)",
+        "uriFormat": "%s/",
+        "action": "debugWithChrome",
+        "killOnServerStop": true
+      }
+    },
+
+    {
+      "name": "1d. examples/multi_select_example.py",
+      "type": "python",
+      "request": "launch",
+      "module": "examples.multi_select_example",
+      // "env": {"REACTPY_DEBUG_MODE": "1"},
+      "justMyCode": false,
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart",
+      "serverReadyAction": {
+        "pattern": "Uvicorn running on\\s+(https?://\\S+)",
+        "uriFormat": "%s/",
+        "action": "debugWithChrome",
+        "killOnServerStop": true
+      }
+    },
+
+    {
+      "name": "1e. examples/dash_ticker_example.py",
       "type": "python",
       "request": "launch",
       "module": "examples.dash_ticker_example",
@@ -39,24 +90,7 @@
     },
 
     {
-      "name": "2a. PyTest (test_counter.py)",
-      "type": "python",
-      "request": "launch",
-      "stopOnEntry": false,
-      "module": "pytest",
-      "args": [
-        "--headed",
-        "tests/test_counter.py"
-      ],
-      "cwd": "${workspaceRoot}",
-      "envFile": "${workspaceRoot}/.env",
-      "console": "internalConsole",
-      "internalConsoleOptions": "openOnSessionStart",
-      "justMyCode": false
-    },
-
-    {
-      "name": "2b. PyTest (test_dropdown.py)",
+      "name": "2a. PyTest (test_dropdown.py)",
       "type": "python",
       "request": "launch",
       "stopOnEntry": false,
@@ -74,14 +108,32 @@
     },
 
     {
-      "name": "2c. PyTest (test_example_dropdown.py)",
+      "name": "2b. PyTest (test_parameters.py)",
       "type": "python",
       "request": "launch",
       "stopOnEntry": false,
       "module": "pytest",
       "args": [
         "--headed",
-        "tests/test_example_dropdown.py"
+        "tests/test_parameters.py"
+      ],
+      "cwd": "${workspaceRoot}",
+      "env": {},
+      "envFile": "${workspaceRoot}/.env",
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart",
+      "justMyCode": false
+    },
+
+    {
+      "name": "2c. PyTest (examples/test_simple.py)",
+      "type": "python",
+      "request": "launch",
+      "stopOnEntry": false,
+      "module": "pytest",
+      "args": [
+        "--headed",
+        "tests/examples/test_simple.py"
       ],
       "cwd": "${workspaceRoot}",
       "env": {},
@@ -102,7 +154,7 @@
       "sourceMapPathOverrides": {
 
         // I've no idea why this works. The underscore or any other
-        // charicter is vital for the breakpoint mapping to correctly.
+        // charicter is vital for the breakpoint mapping to work correctly.
         // TODO: Try and figure out why.
 
         "*": "${workspaceFolder}/_/*",

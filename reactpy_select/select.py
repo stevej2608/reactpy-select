@@ -40,6 +40,7 @@ def Select(
     multi: bool = False,
     name: Optional[str] = None,
     onchange: Optional[OnChangeEvent] = None,
+    placeholder: Optional[str] = None,
     styles:  Optional[Dict] = None,
     theme:  Optional[Dict] = None,
     ):
@@ -158,6 +159,9 @@ def Select(
 
     if onchange:
         props.update({"onChange": onchange})
+
+    if placeholder:
+        props.update({"placeholder": placeholder})
 
     if styles:
         props.update({"styles": styles})
