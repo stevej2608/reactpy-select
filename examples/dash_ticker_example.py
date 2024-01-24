@@ -59,7 +59,7 @@ def update_graph(tickers=None):
             bb_bands = bbands(dff.Close)
             bollinger_traces = [{
                 'x': dff['Date'], 'y': y,
-                'type': 'scatter', 'mode': 'lines',
+                'mode': 'lines',
                 'line': {'width': 2, 'color': colorscale[(i*2) % len(colorscale)]},
                 'hoverinfo': 'none',
                 'legendgroup': ticker,
@@ -70,9 +70,7 @@ def update_graph(tickers=None):
             # https://plotly.com/python/candlestick-charts/
 
             fig = go.Figure(data=[
-                        go.Line(bollinger_traces[0]),
-                        go.Line(bollinger_traces[1]),
-                        go.Line(bollinger_traces[2]),
+                        *[go.Scatter(t) for t in bollinger_traces],
                         go.Candlestick(candlestick)
                     ])
 
