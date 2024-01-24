@@ -4,7 +4,7 @@ import plotly.graph_objects as go
 import pandas as pd
 import colorlover as cl
 from reactpy import html, component, event, use_state, utils
-from reactpy_select.select import Select, ActionMeta
+from reactpy_select import Select, ActionMeta
 
 from utils.fast_server import run
 from utils.options import ServerOptions

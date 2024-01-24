@@ -1,6 +1,6 @@
 from reactpy import html, component, event, run
 
-from reactpy_select.select import Select, ActionMeta, Options
+from reactpy_select import Select, ActionMeta, Options
 
 # https://react-select.com/styles#overriding-the-theme
 # https://codesandbox.io/p/sandbox/codesandboxer-example-rx8xjs?file=%2Fdocs%2Fdata.ts%3A11%2C53-11%2C69

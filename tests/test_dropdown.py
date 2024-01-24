@@ -2,7 +2,7 @@ import pytest
 from reactpy import event, Ref
 from reactpy.testing import DisplayFixture, poll
 
-from reactpy_select.select import Select, ActionMeta, Options
+from reactpy_select import Select, ActionMeta, Options
 
 from .tooling.wait_stable import wait_page_stable
 

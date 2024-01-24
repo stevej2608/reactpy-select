@@ -1,5 +1,5 @@
 from reactpy import html, component, event, run
-from reactpy_select.select import Select, ActionMeta, Options
+from reactpy_select import Select, ActionMeta, Options
 
 # Python clone of one of the more complex react-select
 # custom style examples.

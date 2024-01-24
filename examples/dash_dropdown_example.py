@@ -1,5 +1,5 @@
 from reactpy import html, component, run
-from reactpy_select.select import Select
+from reactpy_select import Select
 
 # Mimic the style of the classic Plotly/Dash Stock Tickers Demo App
 #

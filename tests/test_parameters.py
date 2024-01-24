@@ -1,6 +1,6 @@
 import pytest
 from reactpy.testing import DisplayFixture
-from reactpy_select.select import Select, Options
+from reactpy_select import Select, Options
 
 from .tooling.wait_stable import wait_page_stable
 
