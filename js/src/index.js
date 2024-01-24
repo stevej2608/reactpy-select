@@ -12,7 +12,7 @@ export function bind(node, config) {
   return {
 
     create: (type, props, children) => {
-      console.log('create %s', type)
+      // console.log('create %s', type)
       return React.createElement(type, props, ...children)
     },
 

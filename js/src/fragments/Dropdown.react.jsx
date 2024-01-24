@@ -7,7 +7,7 @@ import Select from 'react-select'
 function Dropdown(props) {
     const local_props = { ...props };
 
-    console.log('Dropdown(styles)')
+    // console.log('Dropdown(styles)')
 
     // https://github.com/JedWatson/react-select/blob/master/packages/react-select/src/theme.ts
 

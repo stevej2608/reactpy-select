@@ -20,6 +20,9 @@ twine = "^4.0.2"
 trio = "^0.24.0"
 pydantic = "^2.5.3"
 fastapi = "^0.109.0"
+pandas = "1.4.2"
+plotly-express = "^0.4.1"
+colorlover = "^0.3.0"
 
 
 [tool.pytest.ini_options]
