@@ -12,6 +12,10 @@ from utils.options import ServerOptions
 # ReactPy clone of the classic Plotly/Dash Stock Tickers Demo App
 #
 # See https://github.com/plotly/dash-stock-tickers-demo-app
+#
+# Integration of plotly.graph_objects with ReactPy:
+#
+# See https://energybeam.blogspot.com/2023/08/how-to-add-plotly-charts-in-reactpy.html
 
 PLOTLY_JS = html.script({
     'src': 'https://cdn.plot.ly/plotly-latest.min.js',
