@@ -1,4 +1,4 @@
-from typing import Callable, Any, overload, Union, cast
+from typing import Callable, Any, Union, cast, List, overload
 
 from reactpy import html
 from reactpy.core.types import VdomDict
@@ -15,7 +15,7 @@ def For(component: ListCallable, iterator: list[Any]) -> VdomDict:
     ...
 
 
-def For(component: Union[ListCallable, EnumerateCallable], iterator: Union[list[Any], enumerate[Any]]):
+def For(component: Union[ListCallable, EnumerateCallable], iterator: Union[List[Any], enumerate[Any]]) -> VdomDict:
     if isinstance(iterator, enumerate):
         component = cast(EnumerateCallable, component)
         return html._(*[component(index, value) for index, value in iterator])
