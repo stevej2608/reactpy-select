@@ -1,4 +1,5 @@
 import pytest
+from reactpy import component
 from reactpy.testing import DisplayFixture
 from reactpy_select import Select, Options
 
@@ -12,11 +13,12 @@ options: Options = [
 
 @pytest.mark.anyio
 async def test_placeholder(display: DisplayFixture):
-
-    await display.show(
-        lambda: Select(options=options, placeholder="Type Something...",id="dd1")
-    )
-
+    
+    @component
+    def App():
+        return Select(options=options, placeholder="Type Something...",id="dd1")
+    
+    await display.show(App)
     await wait_page_stable(display.page)
 
     text = await display.page.locator('id=dd1').all_inner_texts()

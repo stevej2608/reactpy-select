@@ -1,6 +1,7 @@
 from typing import Any, Dict, List, Literal, Optional, TypedDict
 
 from reactpy.core.events import EventHandler
+
 from reactpy.core.types import VdomDict
 
 from .bundle_wrapper import BundleWrapper

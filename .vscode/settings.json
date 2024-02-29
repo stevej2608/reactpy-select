@@ -3,7 +3,9 @@
         "domcontentloaded",
         "networkidle",
         "pytest",
-        "runserver"
+        "runserver",
+        "TSLA",
+        "YHOO"
     ],
     "python.analysis.diagnosticMode": "workspace"
 }

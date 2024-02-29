@@ -7,12 +7,12 @@ from reactpy_select import Select, Options
 
 
 TICKERS: Options = [
-    {'label': 'AAPL', 'value': 'AAPL'}, 
-    {'label': 'TSLA', 'value': 'TSLA'}, 
-    {'label': 'COKE', 'value': 'COKE'}, 
-    {'label': 'YHOO', 'value': 'YHOO'}, 
-    {'label': 'GOOGL', 'value': 'GOOGL'}
-    ]
+    {"label": "AAPL", "value": "AAPL"},
+    {"label": "TSLA", "value": "TSLA"},
+    {"label": "COKE", "value": "COKE"},
+    {"label": "YHOO", "value": "YHOO"},
+    {"label": "GOOGL", "value": "GOOGL"},
+]
 
 colourStyles = {
 
