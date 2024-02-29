@@ -1,13 +1,17 @@
 import sys
+from typing import List, Dict, Any, Tuple, cast, Union
+
 from io import StringIO
 import plotly.graph_objects as go
 import pandas as pd
 import colorlover as cl
 from reactpy import html, component, event, use_state, utils
-from reactpy_select import Select, ActionMeta
+from reactpy.core.types import VdomDict
+
+from reactpy_select import Select, ActionMeta, Options
 
 from utils.fast_server import run
-from utils.options import ServerOptions
+from utils.server_options import ServerOptions
 
 from .dash_dropdown_example import colourStyles
 
@@ -25,32 +29,34 @@ PLOTLY_JS = html.script({
 })
 
 try:
-    df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/dash-stock-ticker-demo.csv')
+    df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/dash-stock-ticker-demo.csv') # type: ignore
 except Exception:
     print("Unable to read 'dash-stock-ticker-demo.csv' from github, no internet connection?")
     sys.exit(0)
 
 colorscale = cl.scales['9']['qual']['Paired']
 
-def bbands(price, window_size=10, num_of_std=5):
-    rolling_mean = price.rolling(window=window_size).mean()
-    rolling_std = price.rolling(window=window_size).std()
-    upper_band = rolling_mean + (rolling_std*num_of_std)
-    lower_band = rolling_mean - (rolling_std*num_of_std)
+def bbands(price: Any, window_size:int=10, num_of_std:int=5) -> Tuple[float, float, float]: # type: ignore
+
+    rolling_mean: float = price.rolling(window=window_size).mean()
+    rolling_std: float = price.rolling(window=window_size).std()
+    upper_band: float = rolling_mean + (rolling_std*num_of_std)
+    lower_band: float = rolling_mean - (rolling_std*num_of_std)
+
     return rolling_mean, upper_band, lower_band
 
-def update_graph(tickers=None):
+def update_graph(tickers: Union[List[str], None]=None) -> VdomDict:
     tickers = tickers or []
-    graphs = []
+    graphs: List[VdomDict] = []
 
     if not tickers:
         graphs.append(html.h2({'style': {'marginTop': 20, 'marginBottom': 20}}, "Select a stock ticker."))
     else:
-        for i, ticker in enumerate(tickers):
+        for _i, ticker in enumerate(tickers):
 
             dff = df[df['Stock'] == ticker]
 
-            candlestick = {
+            candlestick:  Dict[str, Any] = {
                 'x': dff['Date'],
                 'open': dff['Open'],
                 'high': dff['High'],
@@ -62,8 +68,8 @@ def update_graph(tickers=None):
                 'increasing': {'line': {'color': colorscale[0]}},
                 'decreasing': {'line': {'color': colorscale[1]}}
             }
-            bb_bands = bbands(dff.Close)
-            bollinger_traces = [{
+            bb_bands = bbands(dff.Close) # type: ignore
+            bollinger_traces: List[Dict[str, Any]]  = [{
                 'x': dff['Date'], 'y': y,
                 'mode': 'lines',
                 'line': {'width': 2, 'color': colorscale[(i*2) % len(colorscale)]},
@@ -75,7 +81,7 @@ def update_graph(tickers=None):
 
             # https://plotly.com/python/candlestick-charts/
 
-            fig = go.Figure(data=[
+            fig: Any = go.Figure(data=[
                         *[go.Scatter(t) for t in bollinger_traces],
                         go.Candlestick(candlestick)
                     ])
@@ -110,20 +116,20 @@ def update_graph(tickers=None):
 @component
 def AppMain():
 
-    values, set_values =  use_state([])
+    values, set_values =  use_state(cast(Options,[]))
 
     tickers=[{'label': s[0], 'value': str(s[1])}
-                for s in zip(df.Stock.unique(), df.Stock.unique())]
+                for s in zip(df.Stock.unique(), df.Stock.unique())] # type: ignore
 
     @event
-    def on_change(selectedTickers: ServerOptions, actionMeta: ActionMeta):
+    def on_change(selectedTickers: Options, actionMeta: ActionMeta):
         set_values(selectedTickers)
 
     return html.div(
         html.h2('Finance Explorer'),
         html.br(),
         Select(
-            default_value=values,
+            default_value = values,
             onchange=on_change,
             options=tickers,
             multi=True,

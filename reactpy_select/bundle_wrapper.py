@@ -10,4 +10,4 @@ _js_module = module_from_file(
     fallback="⏳",
 )
 
-_Select = export(_js_module, "Select")
+BundleWrapper = export(_js_module, "Select")

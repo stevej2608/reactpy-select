@@ -1,6 +1,9 @@
 {
     "cSpell.words": [
+        "domcontentloaded",
+        "networkidle",
         "pytest",
         "runserver"
-    ]
+    ],
+    "python.analysis.diagnosticMode": "workspace"
 }

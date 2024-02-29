@@ -1,12 +1,12 @@
 from reactpy import html, component, run
-from reactpy_select import Select
+from reactpy_select import Select, Options
 
 # Mimic the style of the classic Plotly/Dash Stock Tickers Demo App
 #
 # See https://github.com/plotly/dash-stock-tickers-demo-app
 
 
-TICKERS = [
+TICKERS: Options = [
     {'label': 'AAPL', 'value': 'AAPL'}, 
     {'label': 'TSLA', 'value': 'TSLA'}, 
     {'label': 'COKE', 'value': 'COKE'}, 

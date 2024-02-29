@@ -1,11 +1,17 @@
-from typing import List, Dict, Callable, TypedDict, Literal, Optional
-from .bundle_wrapper import _Select
+from typing import Any, Dict, List, Literal, Optional, TypedDict
+
+from reactpy.core.events import EventHandler
+from reactpy.core.types import VdomDict
+
+from .bundle_wrapper import BundleWrapper
 
 # https://react-select.com/props
 # https://dash.plotly.com/dash-core-components/dropdown#examples
 
 
-Option = Dict[Literal["label", "value"], str]
+Option = Dict[str, Any]
+
+Options = List[Option]
 
 ActionTypes = Literal[
     "clear",
@@ -17,13 +23,10 @@ ActionTypes = Literal[
     "set-value",
 ]
 
-Options = List[Option]
 
 class ActionMeta(TypedDict):
     action: ActionTypes
     option: Optional[Options]
-
-OnChangeEvent = Callable[[Options, ActionMeta], None]
 
 # Theme customization, see:
 #   https://react-select.com/styles#overriding-the-theme
@@ -31,11 +34,11 @@ OnChangeEvent = Callable[[Options, ActionMeta], None]
 #
 
 def Select(
-    options: Options,
+    options: Optional[Options] = None,
     close_menu_onselect: Optional[bool] = True,
     class_name: Optional[str] = None,
     class_name_prefix: Optional[str] = None,
-    default_value: Options = None,
+    default_value: Optional[Options] = None,
     id: Optional[str] = None,
     is_clearable: Optional[bool] = None,
     is_disabled: Optional[bool] = None,
@@ -43,12 +46,12 @@ def Select(
     is_searchable: Optional[bool] = None,
     multi: bool = False,
     name: Optional[str] = None,
-    onchange: Optional[OnChangeEvent] = None,
+    onchange: Optional[EventHandler] = None,
     placeholder: Optional[str] = None,
-    styles:  Optional[Dict] = None,
-    theme:  Optional[Dict] = None,
-    value: Options = None,
-    ):
+    styles:  Optional[Dict[str, Any]] = None,
+    theme:  Optional[Dict[str, Any]] = None,
+    value: Optional[Options] = None,
+    ) -> VdomDict:
     """ReactPy wrapper for react-select component
 
     Args:
@@ -145,7 +148,7 @@ def Select(
         _type_: _description_
     """
 
-    props: Dict = {"options": options}
+    props: Dict[str, Any] = {"options": options}
 
     if close_menu_onselect is False:
         props.update({'closeMenuOnSelect': False})
@@ -195,4 +198,4 @@ def Select(
     if value:
         props.update({'value': value})
 
-    return _Select(props)
+    return BundleWrapper(props)

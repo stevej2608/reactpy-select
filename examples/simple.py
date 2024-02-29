@@ -1,8 +1,7 @@
 from reactpy import html, component, event, run
-
 from reactpy_select import Select, ActionMeta, Options
 
-options = [
+options: Options = [
   { 'value': 'chocolate', 'label': 'Chocolate' },
   { 'value': 'strawberry', 'label': 'Strawberry' },
   { 'value': 'vanilla', 'label': 'Vanilla' }
@@ -12,12 +11,13 @@ options = [
 def AppMain():
 
     @event
-    def on_change(newValue: Options, actionMeta: ActionMeta):
+    def on_change(newValue: Options, actionMeta: ActionMeta) -> None:
         print(f"OnChange event={newValue} action={actionMeta['action']}")
+
 
     return html.div(
         html.h2('Dropdown Example'),
-        Select(options=options, onchange=on_change, id="dd1", class_name_prefix="react-select")
+        Select(options=options, onchange=on_change, id="dd1", class_name_prefix="react-select"),
     )
 
 # python -m examples.simple

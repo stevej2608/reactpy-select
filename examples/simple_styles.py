@@ -1,10 +1,11 @@
+from typing import cast
 from reactpy import html, component, event, run, use_state
 
 from reactpy_select import Select, ActionMeta, Options
 
 # https://blog.logrocket.com/getting-started-react-select/#adding-custom-styles-react-select-components
 
-options = [
+options: Options = [
   { 'value': 'vanilla', 'label': 'Vanilla', 'rating': 'safe'},
   { 'value': 'chocolate', 'label': 'Chocolate', 'rating': 'good' },
   { 'value': 'strawberry', 'label': 'Strawberry', 'rating': 'wild', 'isDisabled': True},
@@ -34,7 +35,7 @@ STYLES = {
 
 @component
 def AppMain():
-    values, set_values = use_state([])
+    values, set_values = use_state(cast(Options,[]))
 
     @event
     def on_change(new_value: Options, actionMeta: ActionMeta):
