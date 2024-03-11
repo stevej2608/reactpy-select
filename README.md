@@ -1,6 +1,6 @@
 ## reactpy-select
 
-![](./docs/img/multi-select.png)
+![](https://raw.githubusercontent.com/stevej2608/reactpy-select/master/docs/img/multi-select.png)
 
 A minimal component wrapper for [react-select].
  
