@@ -6,10 +6,13 @@
   "configurations": [
     {
       "name": "1a examples/simple.py",
-      "type": "python",
+      "type": "debugpy",
       "request": "launch",
       "module": "examples.simple",
-      // "env": {"REACTPY_DEBUG_MODE": "1"},
+      "env": {
+        "PYTHONPATH": "${cwd}/src",
+        // "REACTPY_DEBUG_MODE": "1"
+      },
       "justMyCode": false,
       "console": "internalConsole",
       "internalConsoleOptions": "openOnSessionStart",
@@ -23,10 +26,13 @@
 
     {
       "name": "1b. examples/simple_styles.py",
-      "type": "python",
+      "type": "debugpy",
       "request": "launch",
       "module": "examples.simple_styles",
-      // "env": {"REACTPY_DEBUG_MODE": "1"},
+      "env": {
+        "PYTHONPATH": "${cwd}/src",
+        // "REACTPY_DEBUG_MODE": "1"
+      },
       "justMyCode": false,
       "console": "internalConsole",
       "internalConsoleOptions": "openOnSessionStart",
@@ -40,10 +46,13 @@
 
     {
       "name": "1c. examples/simple_theme.py",
-      "type": "python",
+      "type": "debugpy",
       "request": "launch",
       "module": "examples.simple_theme",
-      // "env": {"REACTPY_DEBUG_MODE": "1"},
+      "env": {
+        "PYTHONPATH": "${cwd}/src",
+        // "REACTPY_DEBUG_MODE": "1"
+      },
       "justMyCode": false,
       "console": "internalConsole",
       "internalConsoleOptions": "openOnSessionStart",
@@ -57,10 +66,13 @@
 
     {
       "name": "1d. examples/multi_select_example.py",
-      "type": "python",
+      "type": "debugpy",
       "request": "launch",
       "module": "examples.multi_select_example",
-      // "env": {"REACTPY_DEBUG_MODE": "1"},
+      "env": {
+        "PYTHONPATH": "${cwd}/src",
+        // "REACTPY_DEBUG_MODE": "1"
+      },
       "justMyCode": false,
       "console": "internalConsole",
       "internalConsoleOptions": "openOnSessionStart",
@@ -74,10 +86,13 @@
 
     {
       "name": "1e. examples/dash_ticker_example.py",
-      "type": "python",
+      "type": "debugpy",
       "request": "launch",
       "module": "examples.dash_ticker_example",
-      // "env": {"REACTPY_DEBUG_MODE": "1"},
+      "env": {
+        "PYTHONPATH": "${cwd}/src",
+        // "REACTPY_DEBUG_MODE": "1"
+      },
       "justMyCode": false,
       "console": "internalConsole",
       "internalConsoleOptions": "openOnSessionStart",
@@ -91,10 +106,13 @@
 
     {
       "name": "1f. examples/dash_dropdown_example.py",
-      "type": "python",
+      "type": "debugpy",
       "request": "launch",
       "module": "examples.dash_dropdown_example",
-      // "env": {"REACTPY_DEBUG_MODE": "1"},
+      "env": {
+        "PYTHONPATH": "${cwd}/src",
+        // "REACTPY_DEBUG_MODE": "1"
+      },
       "justMyCode": false,
       "console": "internalConsole",
       "internalConsoleOptions": "openOnSessionStart",
@@ -109,7 +127,7 @@
 
     {
       "name": "2a. PyTest (test_dropdown.py)",
-      "type": "python",
+      "type": "debugpy",
       "request": "launch",
       "stopOnEntry": false,
       "module": "pytest",
@@ -127,7 +145,7 @@
 
     {
       "name": "2b. PyTest (test_parameters.py)",
-      "type": "python",
+      "type": "debugpy",
       "request": "launch",
       "stopOnEntry": false,
       "module": "pytest",
@@ -145,7 +163,7 @@
 
     {
       "name": "2c. PyTest (examples/test_simple.py)",
-      "type": "python",
+      "type": "debugpy",
       "request": "launch",
       "stopOnEntry": false,
       "module": "pytest",

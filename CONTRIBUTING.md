@@ -2,9 +2,18 @@
 
     poetry install --no-root
 
-    cd js
+    cd src/js
     npm install
     npm run build
+
+### Running examples
+
+Examples can be found in the *./examples* folder.
+
+    export PYTHONPATH=./src
+
+    python -m examples.simple
+
 
 ### Debugging
 
@@ -21,7 +30,7 @@ running the application, eg:
 
 Select the launch configuration **3a. Launch Chrome/Py**. You will
 now be able to set breakpoints from within VSCODE. The javascript
-source code is in **./js/src/*.js**
+source code is in **./src/js/src/*.js**
 
 In addition, a simple react.js demo app *js\src\demo\App.jsx* is used to
 debug the reactpy component without having to run python. The built-in

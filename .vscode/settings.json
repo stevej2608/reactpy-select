@@ -7,5 +7,8 @@
         "TSLA",
         "YHOO"
     ],
+    "python.analysis.extraPaths": [
+        "./src"
+    ],
     "python.analysis.diagnosticMode": "workspace"
 }
