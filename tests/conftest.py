@@ -1,7 +1,6 @@
 import pytest
-from playwright.async_api import Browser
 from playwright.async_api import async_playwright
-from reactpy.testing import DisplayFixture, BackendFixture
+from reactpy.testing import BackendFixture, DisplayFixture
 
 
 @pytest.fixture(scope="session")
@@ -19,15 +18,16 @@ def pytest_addoption(parser: pytest.Parser) -> None:
 
 
 @pytest.fixture(scope="session")
-async def display(server: BackendFixture, browser: Browser):
-    async with DisplayFixture(server, browser) as display:
-        yield display
+async def display(backend, browser):
+    async with DisplayFixture(backend, browser) as display_fixture:
+        display_fixture.page.set_default_timeout(10000)
+        yield display_fixture
 
 
 @pytest.fixture(scope="session")
-async def server():
-    async with BackendFixture() as server:
-        yield server
+async def backend():
+    async with BackendFixture() as backend_fixture:
+        yield backend_fixture
 
 
 @pytest.fixture(scope="session")

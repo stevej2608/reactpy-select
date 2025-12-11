@@ -1,8 +1,6 @@
 from typing import Any, Dict, List, Literal, Optional, TypedDict
 
-from reactpy.core.events import EventHandler
-
-from reactpy.core.types import VdomDict
+from reactpy.types import EventHandlerType, VdomDict
 
 from .bundle_wrapper import BundleWrapper
 
@@ -47,7 +45,7 @@ def Select(
     is_searchable: Optional[bool] = None,
     multi: bool = False,
     name: Optional[str] = None,
-    onchange: Optional[EventHandler] = None,
+    onchange: Optional[EventHandlerType] = None,
     placeholder: Optional[str] = None,
     styles:  Optional[Dict[str, Any]] = None,
     theme:  Optional[Dict[str, Any]] = None,
@@ -185,7 +183,32 @@ def Select(
         props.update({'name': name})
 
     if onchange:
-        props.update({"onChange": onchange})
+        from reactpy import event as reactpy_event
+        import asyncio
+        import inspect
+
+        # Wrap the event handler to convert dict with numeric keys back to list
+        @reactpy_event
+        async def wrapped_handler(newValue, actionMeta):
+            # ReactPy 2.0 serializes JS arrays as dicts with numeric string keys
+            if isinstance(newValue, dict):
+                if not newValue:
+                    # Empty dict means empty array
+                    newValue = []
+                elif all(k.isdigit() for k in newValue.keys()):
+                    # Convert dict with numeric keys to list
+                    newValue = [newValue[str(i)] for i in range(len(newValue))]
+
+            # Get the underlying function from EventHandler if needed
+            handler_func = onchange.function if hasattr(onchange, 'function') else onchange
+            # Pass as a tuple since the underlying wrapper expects unpacked args
+            result = handler_func((newValue, actionMeta))
+            # Await if it's a coroutine
+            if inspect.iscoroutine(result):
+                return await result
+            return result
+
+        props.update({"onChange": wrapped_handler})
 
     if placeholder:
         props.update({"placeholder": placeholder})
