@@ -1,10 +1,10 @@
 ## Building
 
-    poetry install --no-root
+    hatch build --clean 
 
-    cd src/js
-    npm install
-    npm run build
+    hatch test
+
+
 
 ### Running examples
 

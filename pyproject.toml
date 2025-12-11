@@ -1,49 +1,94 @@
-[tool.poetry]
-name = "reactpy-select"
-version = "0.0.5"
-description = ""
-authors = ["Steve Jones <jonesst2608@gmail.com>"]
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+##############################
+# >>> Hatch Build Config <<< #
+##############################
+
+[project]
+name = "reactpy_select"
+description = "ReactPy Select component"
 readme = "README.md"
 license = "MIT"
-homepage = "https://github.com/stevej2608/reactpy-select/blob/master/README.md"
-repository = "https://github.com/stevej2608/reactpy-select"
-packages = [{include = "reactpy_select", from="src"}]
-include = ["reactpy_select/bundle.min.js", "reactpy_select/bundle.dev.js"]
+authors = [{ name = "Steve Jones", email = "jonesst2608@gmail.com" }]
+requires-python = ">=3.9"
+classifiers = [
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Operating System :: OS Independent",
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Widget Sets",
+  "Topic :: Software Development :: User Interfaces",
+  "Environment :: Web Environment",
+  "Typing :: Typed",
+]
+dependencies = ["reactpy>=1.0.2,<2.0.0"]
+dynamic = ["version"]
+urls.Homepage = "https://github.com/stevej2608/reactpy-select/blob/master/README.md"
+urls.Repository = "https://github.com/stevej2608/reactpy-select"
+urls.Source = "https://github.com/stevej2608/reactpy-select"
 
-[tool.poetry.dependencies]
-python = ">=3.9,<4.0.0"
-reactpy = "^1.0.2"
+[tool.hatch.version]
+path = "src/reactpy_select/__init__.py"
 
-[tool.poetry.group.dev.dependencies]
-colorlover = "^0.3.0"
-fastapi = "^0.109.0"
-pandas = "1.4.2"
-playwright = "1.41.1"
-pydantic = "^2.5.3"
-pytest = "^7.4.4"
-pytest-asyncio = "^0.23.3"
-starlette = ">=0.13.6"
-trio = "^0.24.0"
-twine = "^4.0.2"
-uvicorn = {extras = ["standard"], version = ">=0.19.0"}
-plotly = "^5.19.0"
+[tool.hatch.build.targets.sdist]
+include = ["/src"]
+artifacts = ["/src/reactpy_select/bundle.min.js", "/src/reactpy_select/bundle.dev.js"]
+
+[tool.hatch.build.targets.wheel]
+artifacts = ["/src/reactpy_select/bundle.min.js", "/src/reactpy_select/bundle.dev.js"]
+
+[tool.hatch.metadata]
+license-files = { paths = ["LICENSE"] }
+
+[tool.hatch.envs.default]
+installer = "uv"
+
+#############################
+# >>> Hatch Test Runner <<< #
+#############################
+
+[tool.hatch.envs.hatch-test]
+extra-dependencies = [
+  "colorlover>=0.3.0",
+  "fastapi>=0.109.0",
+#   "pandas==1.4.2",
+  "playwright==1.41.1",
+  "pydantic>=2.5.3",
+  "pytest>=7.4.4",
+  "pytest-asyncio>=0.23.3",
+  "starlette>=0.13.6",
+  "trio>=0.24.0",
+  "uvicorn[standard]>=0.19.0,<0.36.0",
+  "plotly>=5.19.0",
+]
+randomize = true
+matrix-name-format = "{variable}-{value}"
+
+[[tool.hatch.envs.hatch-test.matrix]]
+python = ["3.9", "3.10", "3.11", "3.12"]
+
+#########################
+# >>> Generic Tools <<< #
+#########################
 
 [tool.ruff]
 # https://docs.astral.sh/ruff/configuration/
 # https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff
-
 line-length = 120
+
 [tool.pyright]
 # https://github.com/microsoft/pyright/blob/main/docs/configuration.md#sample-pyprojecttoml-file
 typeCheckingMode = "strict"
 pythonVersion = "3.12"
 reportMissingTypeStubs = false
 
-
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = "tests"
-
 log_cli_level = "INFO"
 filterwarnings = [
     "ignore::DeprecationWarning",
@@ -51,7 +96,3 @@ filterwarnings = [
 ]
 addopts = "-rsxX -vv"
 # asyncio_mode = "auto"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
