@@ -1,4 +1,5 @@
-from reactpy import html, component, run
+from reactpy import html, component
+from examples.runner import run
 from reactpy_select import Select, Options
 
 # Mimic the style of the classic Plotly/Dash Stock Tickers Demo App

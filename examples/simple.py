@@ -1,5 +1,6 @@
-from reactpy import html, component, event, run
+from reactpy import html, component, event
 from reactpy_select import Select, ActionMeta, Options
+from examples.runner import run
 
 options: Options = [
   { 'value': 'chocolate', 'label': 'Chocolate' },

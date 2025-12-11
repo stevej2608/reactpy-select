@@ -1,6 +1,6 @@
 from typing import cast
-from reactpy import html, component, event, run, use_state
-
+from reactpy import html, component, event, use_state
+from examples.runner import run
 from reactpy_select import Select, ActionMeta, Options
 
 # https://blog.logrocket.com/getting-started-react-select/#adding-custom-styles-react-select-components

@@ -1,5 +1,5 @@
-from reactpy import html, component, event, run
-
+from reactpy import html, component, event
+from examples.runner import run
 from reactpy_select import Select, ActionMeta, Options
 
 # https://react-select.com/styles#overriding-the-theme
