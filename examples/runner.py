@@ -55,15 +55,18 @@ def run(
         head = html.head(html.title(title))
     elif "children" in head:
         # Add title to existing head if not present
+        children = head.get("children", [])  # type: ignore[misc]
         has_title = any(
-            child.get("tagName") == "title"
-            for child in head.get("children", [])
-            if isinstance(child, dict)
+            isinstance(child, dict) and child.get("tagName") == "title"  # type: ignore[union-attr]
+            for child in children  # type: ignore[union-attr]
         )
         if not has_title:
-            head["children"].insert(0, html.title(title))
+            # Convert to list to enable insert operation
+            children_list = list(children)  # type: ignore[arg-type]
+            children_list.insert(0, html.title(title))  # type: ignore[union-attr]
+            head["children"] = children_list  # type: ignore[typeddict-item]
     else:
-        head["children"] = [html.title(title)]
+        head["children"] = [html.title(title)]  # type: ignore[typeddict-item]
 
     # Create ReactPy ASGI app
     app = ReactPy(app_main, html_head=head)

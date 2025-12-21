@@ -54,7 +54,7 @@ def update_graph(tickers: Union[List[str], None]=None) -> VdomDict:
     else:
         for _i, ticker in enumerate(tickers):
 
-            dff = df[df['Stock'] == ticker]
+            dff: pd.DataFrame = df[df['Stock'] == ticker]  # type: ignore[assignment]
 
             candlestick:  Dict[str, Any] = {
                 'x': dff['Date'],
@@ -118,8 +118,9 @@ def AppMain():
 
     values, set_values =  use_state(cast(Options,[]))
 
-    tickers=[{'label': s[0], 'value': str(s[1])}
-                for s in zip(df.Stock.unique(), df.Stock.unique())] # type: ignore
+    # pandas DataFrame types are not fully understood by pyright
+    tickers: Options = [{'label': str(s[0]), 'value': str(s[1])}  # type: ignore[misc]
+                for s in zip(df.Stock.unique(), df.Stock.unique())]  # type: ignore[misc]
 
     @event
     def on_change(selectedTickers: Options, actionMeta: ActionMeta):
