@@ -8,8 +8,7 @@ from typing import Any, Callable
 import uvicorn
 from fastapi import FastAPI
 from reactpy import html
-from reactpy.backend.fastapi import Options as FastApiOptions
-from reactpy.backend.fastapi import configure
+from reactpy.executors.asgi import ReactPy
 from reactpy.core.component import Component
 
 from utils.logger import log, logging, disable_noisy_logs
@@ -74,11 +73,19 @@ def run(
         asset_folder = Path(inspect.getfile(func)).parent.relative_to(os.getcwd())
         options.asset_folder = str(asset_folder)
 
+    # Mount assets API
     app.mount("/" + options.asset_root, assets_api(options))
 
-    opt = FastApiOptions(head=html.head(*options.head))
+    # Create ReactPy ASGI app with v2 API
+    # Pass head elements via html_head parameter
+    reactpy_app = ReactPy(
+        app_main,
+        html_head=html.head(*options.head) if options.head else None
+    )
 
-    configure(app, app_main, options=opt)
+    # Mount ReactPy ASGI app at root path
+    # This needs to be mounted last so other routes (like assets) take precedence
+    app.mount("/", reactpy_app)
 
     app_path = _app_path(app)
 

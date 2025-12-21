@@ -184,29 +184,28 @@ def Select(
 
     if onchange:
         from reactpy import event as reactpy_event
-        import asyncio
         import inspect
 
         # Wrap the event handler to convert dict with numeric keys back to list
         @reactpy_event
-        async def wrapped_handler(newValue, actionMeta):
+        async def wrapped_handler(newValue: Any, actionMeta: Any) -> Any:
             # ReactPy 2.0 serializes JS arrays as dicts with numeric string keys
             if isinstance(newValue, dict):
                 if not newValue:
                     # Empty dict means empty array
                     newValue = []
-                elif all(k.isdigit() for k in newValue.keys()):
+                elif all(str(k).isdigit() for k in newValue.keys()):  # type: ignore
                     # Convert dict with numeric keys to list
-                    newValue = [newValue[str(i)] for i in range(len(newValue))]
+                    newValue = [newValue[str(i)] for i in range(len(newValue))]  # type: ignore
 
             # Get the underlying function from EventHandler if needed
-            handler_func = onchange.function if hasattr(onchange, 'function') else onchange
+            handler_func = onchange.function if hasattr(onchange, 'function') else onchange  # type: ignore
             # Pass as a tuple since the underlying wrapper expects unpacked args
-            result = handler_func((newValue, actionMeta))
+            result = handler_func((newValue, actionMeta))  # type: ignore
             # Await if it's a coroutine
-            if inspect.iscoroutine(result):
-                return await result
-            return result
+            if inspect.iscoroutine(result):  # type: ignore
+                return await result  # type: ignore
+            return result  # type: ignore
 
         props.update({"onChange": wrapped_handler})
 

@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 import pandas as pd
 import colorlover as cl
 from reactpy import html, component, event, use_state, utils
-from reactpy.core.types import VdomDict
+from reactpy.types import VdomDict
 
 from reactpy_select import Select, ActionMeta, Options
 
@@ -108,7 +108,7 @@ def update_graph(tickers: Union[List[str], None]=None) -> VdomDict:
             fig.write_html(buffer, include_plotlyjs='cdn', config={'displayModeBar': False})
             fig_html = buffer.getvalue()
 
-            graphs.append(utils.html_to_vdom(fig_html))
+            graphs.append(utils.string_to_reactpy(fig_html))
 
     return html.div(graphs)
 

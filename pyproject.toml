@@ -60,15 +60,23 @@ artifacts = []
 [tool.hatch.envs.hatch-test]
 extra-dependencies = [
   "asgi-tools",
+  "asgi-tools",
   "asgiref",
+  "asgiref",
+  "colorlover>=0.3.0",
   "exceptiongroup",
+  "fastapi",
   "jsonpointer",
   "orjson",
+  "pandas",
   "playwright",
+  "plotly",
+  "pydantic>=2.5.3",
   "pyright",
   "pytest-asyncio",
   "pytest-sugar",
   "responses",
+  "servestatic",
   "servestatic",
   "uvicorn[standard]",
 ]
@@ -116,4 +124,4 @@ line-length = 120
 typeCheckingMode = "strict"
 pythonVersion = "3.11"
 reportMissingTypeStubs = false
-ignore = ["tmp", "tmp/**", "**/tmp/**"]
+ignore = ["tmp", "tmp/**", "**/tmp/**", "examples", "examples/**", "utils", "utils/**"]
