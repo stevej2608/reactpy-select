@@ -1,8 +1,8 @@
-import pytest
+
 from reactpy.testing import DisplayFixture
 from examples.simple import AppMain
 
-from ..tooling.wait_stable import wait_page_stable
+from tests.tooling.wait_stable import wait_page_stable
 
 options = [
   { 'value': 'chocolate', 'label': 'Chocolate' },
