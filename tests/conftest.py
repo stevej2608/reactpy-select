@@ -1,36 +1,59 @@
 import pytest
-from playwright.async_api import async_playwright
-from reactpy.testing import BackendFixture, DisplayFixture
+from typing import AsyncGenerator
+from _pytest.config import Config
+from _pytest.config.argparsing import Parser
+from playwright.async_api import Browser, Page
+
+from reactpy.testing import DisplayFixture, BackendFixture
+from reactpy.testing.common import GITHUB_ACTIONS
+from reactpy._option import Option
+
+REACTPY_TESTS_DEFAULT_TIMEOUT = Option(
+    "REACTPY_TESTS_DEFAULT_TIMEOUT",
+    10.0,
+    mutable=False,
+    validator=float,
+)
+"""A default timeout for testing utilities in ReactPy"""
 
 
 @pytest.fixture(scope="session")
 def anyio_backend():
-    return "asyncio"
+    return 'asyncio'
 
-
-def pytest_addoption(parser: pytest.Parser) -> None:
+def pytest_addoption(parser: Parser) -> None:
     parser.addoption(
-        "--headed",
-        dest="headed",
+        "--headless",
+        dest="headless",
         action="store_true",
-        help="Open a browser window when running web-based tests",
+        help="Don't open a browser window when running web-based tests",
     )
 
+@pytest.fixture
+async def display(server: BackendFixture, page: Page) -> AsyncGenerator[DisplayFixture, None]:
+    async with DisplayFixture(server, page) as display:
+        yield display
 
-@pytest.fixture(scope="session")
-async def display(backend, browser):
-    async with DisplayFixture(backend, browser) as display_fixture:
-        display_fixture.page.set_default_timeout(10000)
-        yield display_fixture
-
-
-@pytest.fixture(scope="session")
-async def backend():
-    async with BackendFixture() as backend_fixture:
-        yield backend_fixture
+@pytest.fixture
+async def server() -> AsyncGenerator[BackendFixture, None]:
+    async with BackendFixture() as server:
+        yield server
 
 
-@pytest.fixture(scope="session")
-async def browser(pytestconfig: pytest.Config):
+@pytest.fixture
+async def page(browser: Browser) -> AsyncGenerator[Page, None]:
+    pg = await browser.new_page()
+    pg.set_default_timeout(REACTPY_TESTS_DEFAULT_TIMEOUT.current * 1000)
+    try:
+        yield pg
+    finally:
+        await pg.close()
+
+@pytest.fixture
+async def browser(pytestconfig: Config):
+    from playwright.async_api import async_playwright
+
     async with async_playwright() as pw:
-        yield await pw.chromium.launch(headless=not bool(pytestconfig.option.headed))
+        yield await pw.chromium.launch(
+            headless=bool(pytestconfig.option.headless) or GITHUB_ACTIONS
+        )

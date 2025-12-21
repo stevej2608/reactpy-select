@@ -12,7 +12,7 @@ options = [
 
 # https://playwright.dev/python/docs/next/locators
 
-@pytest.mark.anyio
+
 async def test_example_simple(display: DisplayFixture):
     await display.show(AppMain)
     await wait_page_stable(display.page)

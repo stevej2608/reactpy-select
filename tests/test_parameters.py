@@ -1,4 +1,3 @@
-import pytest
 from reactpy import component
 from reactpy.testing import DisplayFixture
 from reactpy_select import Select, Options
@@ -11,7 +10,6 @@ options: Options = [
   { 'value': 'vanilla', 'label': 'Vanilla' }
 ]
 
-@pytest.mark.anyio
 async def test_placeholder(display: DisplayFixture):
     
     @component

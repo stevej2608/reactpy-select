@@ -1,4 +1,3 @@
-import pytest
 from reactpy import Ref, component, event
 from reactpy.testing import DisplayFixture, poll
 
@@ -15,7 +14,7 @@ options: Options = [
 # https://playwright.dev/python/docs/next/locators
 # https://playwright.dev/python/docs/next/other-locators#xpath-locator
 
-@pytest.mark.anyio
+
 async def test_dropdown(display: DisplayFixture):
     selected_options = Ref([])
 
