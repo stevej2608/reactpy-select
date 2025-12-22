@@ -60,8 +60,6 @@ artifacts = []
 [tool.hatch.envs.hatch-test]
 extra-dependencies = [
   "asgi-tools",
-  "asgi-tools",
-  "asgiref",
   "asgiref",
   "colorlover>=0.3.0",
   "exceptiongroup",
@@ -76,7 +74,6 @@ extra-dependencies = [
   "pytest-asyncio",
   "pytest-sugar",
   "responses",
-  "servestatic",
   "servestatic",
   "uvicorn[standard]",
 ]
@@ -101,7 +98,7 @@ asyncio_default_fixture_loop_scope = "function"
 extra-dependencies = ["pyright"]
 
 [tool.hatch.envs.python.scripts]
-type_check = ["pyright reactpy_table"]
+type_check = ["pyright reactpy_select"]
 
 [tool.hatch.envs.javascript]
 detached = true
