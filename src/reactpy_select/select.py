@@ -1,6 +1,6 @@
 from typing import Any, Dict, List, Literal, Optional, TypedDict
 
-from reactpy.types import EventHandlerType, VdomDict
+from reactpy.types import BaseEventHandler, VdomDict
 
 from .bundle_wrapper import BundleWrapper
 
@@ -45,7 +45,7 @@ def Select(
     is_searchable: Optional[bool] = None,
     multi: bool = False,
     name: Optional[str] = None,
-    onchange: Optional[EventHandlerType] = None,
+    onchange: Optional[BaseEventHandler] = None,
     placeholder: Optional[str] = None,
     styles:  Optional[Dict[str, Any]] = None,
     theme:  Optional[Dict[str, Any]] = None,
