@@ -1,4 +1,4 @@
-__version__ = "0.0.11b7"
+__version__ = "0.0.12b7"
 
 # pyright: reportUnusedImport=false
 # ruff: noqa: F401
