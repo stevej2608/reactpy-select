@@ -23,10 +23,7 @@ from .dash_dropdown_example import colourStyles
 #
 # See https://energybeam.blogspot.com/2023/08/how-to-add-plotly-charts-in-reactpy.html
 
-PLOTLY_JS = html.script({
-    'src': 'https://cdn.plot.ly/plotly-latest.min.js',
-    'charset': 'utf-8'
-})
+PLOTLY_JS = 'https://cdn.plot.ly/plotly-latest.min.js'
 
 try:
     df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/dash-stock-ticker-demo.csv') # type: ignore

@@ -70,11 +70,15 @@ class AppRunner:
         """Build the HTML head element. Override in subclasses."""
         head_children = [html.title(title)]
 
-        # Add any additional CSS files
+        # Add any additional CSS/JS files
+
         if additional_head:
-            for css_path in additional_head:
-                if css_path.endswith('.css'):
-                    head_children.append(html.link({'rel': 'stylesheet', 'href': css_path}))
+            for _path in additional_head:
+                if _path.endswith('.css'):
+                    head_children.append(html.link({'rel': 'stylesheet', 'href': _path}))
+                if _path.endswith('.js'):
+                    head_children.append(html.script({'src': _path,'charset': 'utf-8'}))
+
 
         return html.head(*head_children)
 
