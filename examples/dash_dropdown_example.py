@@ -1,5 +1,5 @@
 from reactpy import html, component
-from examples.runner import run
+from utils.app_runner import AppRunner
 from reactpy_select import Select, Options
 
 # Mimic the style of the classic Plotly/Dash Stock Tickers Demo App
@@ -55,4 +55,4 @@ def AppMain():
 # python -m examples.dash_dropdown_example
 
 if __name__ == '__main__':
-    run(AppMain)
+    AppRunner.run(AppMain)

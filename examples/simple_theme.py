@@ -1,5 +1,5 @@
 from reactpy import html, component, event
-from examples.runner import run
+from utils.app_runner import AppRunner
 from reactpy_select import Select, ActionMeta, Options
 
 # https://react-select.com/styles#overriding-the-theme
@@ -44,4 +44,4 @@ def AppMain():
 # python -m examples.simple_theme
 
 if __name__ == "__main__":
-    run(AppMain)
+    AppRunner.run(AppMain)

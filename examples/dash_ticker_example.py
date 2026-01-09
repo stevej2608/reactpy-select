@@ -10,7 +10,7 @@ from reactpy.types import VdomDict
 
 from reactpy_select import Select, ActionMeta, Options
 
-from utils.fast_server import run
+from utils.app_runner import AppRunner
 from utils.server_options import ServerOptions
 
 from .dash_dropdown_example import colourStyles
@@ -143,5 +143,4 @@ def AppMain():
 
 if __name__ == '__main__':
     title=html.title("Ticker Example")
-    options = ServerOptions(head=[PLOTLY_JS, title])
-    run(AppMain, options=options)
+    AppRunner.run(AppMain, additional_head=[PLOTLY_JS])

@@ -7,7 +7,7 @@ requires = ["hatchling", "hatch-build-scripts"]
 
 [project]
 name = "reactpy-select"
-description = "ReactPy Select component"
+description = "A ReactPy component package"
 readme = "README.md"
 keywords = ["React", "ReactJS", "ReactPy", "components"]
 license = "MIT"
@@ -23,7 +23,7 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dependencies = ["reactpy==2.0.0b7"]
+dependencies = ["reactpy==2.0.0b7", "uvicorn[standard]"]
 dynamic = ["version"]
 urls.Homepage = "https://github.com/stevej2608/reactpy-select"
 urls.Source = "https://github.com/stevej2608/reactpy-select"
@@ -58,21 +58,19 @@ artifacts = []
 extra-dependencies = [
   "asgi_tools",
   "asgiref",
-  "colorlover>=0.3.0",
   "exceptiongroup",
   "jsonpointer",
   "orjson",
   "pillow",
-  "pandas",
   "pixelmatch",
   "playwright",
   "pydantic",
-  "plotly",
   "pyright",
   "pytest-asyncio",
   "pytest-sugar",
   "responses",
   "servestatic",
+  "starlette",
   "uvicorn[standard]"
 ]
 randomize = true

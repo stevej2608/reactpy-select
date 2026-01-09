@@ -1,5 +1,5 @@
 from reactpy import html, component, event
-from examples.runner import run
+from utils.app_runner import AppRunner
 from reactpy_select import Select, ActionMeta, Options
 
 # Python clone of one of the more complex react-select
@@ -102,4 +102,4 @@ def AppMain():
 # python -m examples.multi_select_example
 
 if __name__ == '__main__':
-    run(AppMain)
+    AppRunner.run(AppMain)

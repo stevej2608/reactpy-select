@@ -1,6 +1,6 @@
 from reactpy import html, component, event
 from reactpy_select import Select, ActionMeta, Options
-from examples.runner import run
+from utils.app_runner import AppRunner
 
 options: Options = [
   { 'value': 'chocolate', 'label': 'Chocolate' },
@@ -24,4 +24,4 @@ def AppMain():
 # python -m examples.simple
 
 if __name__ == "__main__":
-    run(AppMain)
+    AppRunner.run(AppMain)
